@@ -31,6 +31,7 @@ let ApUpload = React.createClass({
         width: types.number,
         height: types.number,
         text: types.string,
+        accept: types.string,
         icon: types.string,
         closeIcon: types.string,
         spinnerTheme: types.string
@@ -66,6 +67,7 @@ let ApUpload = React.createClass({
             multiple: false,
             width: 180,
             height: 180,
+            accept: null,
             text: 'Upload file',
             icon: 'fa fa-cloud-upload',
             closeIcon: 'fa fa-close',
@@ -85,6 +87,7 @@ let ApUpload = React.createClass({
                        multiple={props.multiple}
                        name={props.name}
                        id={props.id}
+                       accept={props.accept}
                        onChange={s.handleChange}
                        style={{width, height}}
                 />

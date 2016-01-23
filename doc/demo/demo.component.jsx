@@ -11,6 +11,7 @@ let Demo = React.createClass({
                 <ApUpload multiple={true}
                           id="demo-file-upload"
                           name="file-input-01"
+                          accept="image/*"
                           onLoad={s.handleLoaded}>
                 </ApUpload>
             </div>

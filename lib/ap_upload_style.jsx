@@ -109,7 +109,7 @@ let ApUploadStyle = React.createClass({
                     right: 0,
                     top: 0,
                     zIndex: 5,
-                    margin: `0 2px`,
+                    margin: `0`,
                     border: `none`,
                     padding: `8px`,
                     fontSize: `24px`,
