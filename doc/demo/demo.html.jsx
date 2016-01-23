@@ -11,7 +11,7 @@ import Demo from './demo.component.js';
 import ApUploadStyle from '../../lib/ap_upload_style';
 
 import {ApThemeStyle} from 'apeman-react-theme';
-import {ApStyle, ApHead, ApBody, ApLinks, ApHtml} from 'apeman-react-basic';
+import {ApIonIconStyle, ApFaIconStyle, ApStyle, ApHead, ApBody, ApLinks, ApHtml} from 'apeman-react-basic';
 
 const FAVICON_URL = "https://raw.githubusercontent.com/apeman-asset-labo/apeman-asset-images/master/dist/favicon/react-favicon.png";
 
@@ -23,6 +23,8 @@ module.exports = (
                 icon={FAVICON_URL}>
             <ApStyle data={fs.readFileSync(stylesheets.reactDemo).toString()}></ApStyle>
             <ApThemeStyle dominant="#b35600"></ApThemeStyle>
+            <ApIonIconStyle></ApIonIconStyle>
+            <ApFaIconStyle></ApFaIconStyle>
             <ApUploadStyle></ApUploadStyle>
         </ApHead>
         <ApBody>
