@@ -1,0 +1,19 @@
+"use strict";
+
+const ReactDomServer = require('react-dom/server'),
+    fs = require('fs');
+
+module.exports = {
+    force: true,
+    mode: '444',
+    tmpl: function (data) {
+        return ReactDomServer.renderToStaticMarkup(data.component);
+    },
+    data: {
+        component: require('./demo.html.js')
+    }
+};
+
+if (!module.parent) {
+    require('coz').render(__filename);
+}
