@@ -19,6 +19,12 @@ describe('ap-upload', () => {
         done();
     });
 
+    it('Detect image url', (done)=> {
+        assert.ok(ApUpload.isImageUrl("https://example.com/dummy/12.jpg"));
+        assert.ok(ApUpload.isImageUrl("https://example.com/dummy/12.gif"));
+        assert.ok(!ApUpload.isImageUrl("https://example.com/dummy/12.txt"));
+        done();
+    });
 
     it('Render component.', (done) => {
         let html = ReactDOM.renderToString(

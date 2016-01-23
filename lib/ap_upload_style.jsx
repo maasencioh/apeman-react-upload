@@ -14,7 +14,7 @@ let ApUploadStyle = React.createClass({
         scoped: types.bool,
         style: types.object,
         highlightColor: types.string,
-        backgroundColor: types.string,
+        backgroundColor: types.string
     },
     getDefaultProps() {
         return {
@@ -34,7 +34,8 @@ let ApUploadStyle = React.createClass({
                 '.ap-upload': {
                     position: `relative`,
                     display: `inline-block`,
-                    color: `#888`
+                    color: `#888`,
+                    overflow: `hidden`
                 },
                 '.ap-upload:hover': {
                     color: `#555`
@@ -101,7 +102,8 @@ let ApUploadStyle = React.createClass({
                     top: 0,
                     right: 0,
                     bottom: 0,
-                    pointerEvents: `none`
+                    pointerEvents: `none`,
+                    border: `1px solid #AAA`
                 },
                 '.ap-upload-remove-button': {
                     display: 'inline-block',

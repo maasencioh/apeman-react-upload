@@ -8,6 +8,7 @@
 import React, {PropTypes as types} from 'react';
 import classnames from 'classnames';
 import async from 'async';
+import path from 'path';
 import uuid from 'uuid';
 import {ApImage} from 'apeman-react-image';
 import {ApSpinner} from 'apeman-react-spinner';
@@ -34,7 +35,11 @@ let ApUpload = React.createClass({
         accept: types.string,
         icon: types.string,
         closeIcon: types.string,
-        spinnerTheme: types.string
+        spinnerTheme: types.string,
+        value: types.oneOfType([
+            types.string,
+            types.array
+        ])
     },
 
     mixins: [],
@@ -49,14 +54,26 @@ let ApUpload = React.createClass({
                 callback(null, ev.target.result);
             };
             reader.readAsDataURL(file);
+        },
+        isImageUrl(url){
+            return /^data:image/.test(url) || !!~[
+                    '.jpg',
+                    '.jpeg',
+                    '.svg',
+                    '.gif',
+                    '.png'
+                ].indexOf(path.extname(url));
         }
     },
 
     getInitialState() {
+        let s = this,
+            {props} = s;
+        let hasValue = props.value && props.value.length > 0;
         return {
             spinning: false,
             error: null,
-            urls: null
+            urls: hasValue ? [].concat(props.value) : null
         };
     },
 
@@ -101,7 +118,7 @@ let ApUpload = React.createClass({
                     </span>
                 </label>
                 {s._renderPreviewImage(state.urls, width, height)}
-                {s._renderRemoveButton(!!state.urls, props.closeIcon)}
+                {s._renderRemoveButton(!!(state.urls && state.urls.length > 0), props.closeIcon)}
                 {s._renderSpinner(state.spinning, props.spinnerTheme)}
             </div>
         );
@@ -209,14 +226,19 @@ let ApUpload = React.createClass({
         if (!urls) {
             return null;
         }
+        let s = this;
         return urls
-            .filter(url => /^data:image/.test(url))
-            .map(url => (
+            .filter(url => ApUpload.isImageUrl(url))
+            .map((url, i) => (
                 <ApImage key={url}
                          src={url}
                          height={height}
                          width={width}
                          className={classnames("ap-upload-preview-image")}
+                         style={{
+                            left: `${i * 10}%`,
+                            top: `${i * 10}%`
+                         }}
                          scale="fit">
                 </ApImage>
             ));
