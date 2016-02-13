@@ -29,7 +29,8 @@ let Demo = React.createClass({
             </div>
         );
     },
-    handleLoaded(files){
+    handleLoaded(ev){
+        let files = ev.target && ev.target.result;
         console.log('files', files);
     }
 });

@@ -169,6 +169,7 @@ let ApUpload = React.createClass({
 
         s.setState({spinning: true});
         async.concat(files, ApUpload.readFile, (err, urls) => {
+            e.urls = urls;
             s.setState({
                 spinning: false,
                 error: err,
@@ -180,7 +181,7 @@ let ApUpload = React.createClass({
                 }
             } else {
                 if (props.onLoad) {
-                    props.onLoad(urls);
+                    props.onLoad(e);
                 }
             }
         });
