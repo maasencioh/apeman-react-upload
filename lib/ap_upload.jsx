@@ -27,6 +27,7 @@ let ApUpload = React.createClass({
         name: types.string,
         id: types.string,
         multiple: types.bool,
+        onChange: types.func,
         onLoad: types.func,
         onError: types.func,
         width: types.number,
@@ -88,7 +89,10 @@ let ApUpload = React.createClass({
             text: 'Upload file',
             icon: 'fa fa-cloud-upload',
             closeIcon: 'fa fa-close',
-            spinnerIcon: 'c'
+            spinnerIcon: ApSpinner.DEFAULT_THEME,
+            onChange: null,
+            onLoad: null,
+            onError: null
         };
     },
 
@@ -129,35 +133,6 @@ let ApUpload = React.createClass({
     // Lifecycle
     //--------------------
 
-    componentWillMount() {
-        let s = this;
-    },
-
-    componentDidMount() {
-        let s = this;
-    },
-
-    componentWillReceiveProps(nextProps) {
-        let s = this;
-    },
-
-    shouldComponentUpdate(nextProps, nextState) {
-        let s = this;
-        return true;
-    },
-
-    componentWillUpdate(nextProps, nextState) {
-        let s = this;
-    },
-
-    componentDidUpdate(prevProps, prevState) {
-        let s = this;
-    },
-
-    componentWillUnmount() {
-        let s = this;
-    },
-
     //------------------
     // Custom
     //------------------
@@ -167,7 +142,12 @@ let ApUpload = React.createClass({
             {props} = s,
             files = Array.prototype.slice.call(e.target.files, 0);
 
+        let {onChange, onError, onLoad} = props;
+
         s.setState({spinning: true});
+        if (onChange) {
+            onChange(e);
+        }
         async.concat(files, ApUpload.readFile, (err, urls) => {
             e.urls = urls;
             s.setState({
@@ -176,12 +156,12 @@ let ApUpload = React.createClass({
                 urls: urls
             });
             if (err) {
-                if (props.onError) {
-                    props.onError(err);
+                if (onError) {
+                    onError(err);
                 }
             } else {
-                if (props.onLoad) {
-                    props.onLoad(e);
+                if (onLoad) {
+                    onLoad(e);
                 }
             }
         });
@@ -189,13 +169,14 @@ let ApUpload = React.createClass({
 
     handleRemove(){
         let s = this,
-            {props} = s;
+            {props} = s,
+            {onLoad} = props;
         s.setState({
             error: null,
             urls: null
         });
-        if (props.onLoad) {
-            props.onLoad([]);
+        if (onLoad) {
+            onLoad([]);
         }
     },
 
@@ -220,7 +201,7 @@ let ApUpload = React.createClass({
             <ApButton onTap={s.handleRemove} className="ap-upload-remove-button">
                 <i className={classnames("ap-upload-remove-icon", icon)}/>
             </ApButton>
-        )
+        );
     },
 
     _renderPreviewImage(urls, width, height){

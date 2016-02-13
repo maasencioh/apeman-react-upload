@@ -23,10 +23,10 @@
   },
   "homepage": "https://github.com/apeman-react-labo/apeman-react-upload#readme",
   "dependencies": {
-    "apeman-react-button": "^2.3.1",
-    "apeman-react-image": "^2.1.5",
-    "apeman-react-spinner": "^2.2.0",
-    "apeman-react-style": "^2.4.1",
+    "apeman-react-button": "^2.3.3",
+    "apeman-react-image": "^2.1.7",
+    "apeman-react-spinner": "^2.4.1",
+    "apeman-react-style": "^2.7.0",
     "argx": "^1.3.1",
     "async": "^1.5.2",
     "classnames": "^2.2.3",
@@ -45,15 +45,15 @@
     "ape-updating": "^2.0.3",
     "ape-watching": "^2.0.0",
     "apeman-asset-stylesheets": "^1.0.5",
-    "apeman-react-basic": "^2.17.5",
-    "apeman-react-theme": "^2.2.4",
-    "babel-preset-es2015": "^6.3.13",
-    "babel-preset-react": "^6.3.13",
-    "coz": "^4.0.1",
+    "apeman-react-basic": "^2.24.0",
+    "apeman-react-theme": "^2.6.1",
+    "babel-preset-es2015": "^6.5.0",
+    "babel-preset-react": "^6.5.0",
+    "coz": "^4.0.2",
     "expandglob": "^1.0.1",
     "injectmock": "^1.1.3",
-    "react": "^0.14.6",
-    "react-dom": "^0.14.6"
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7"
   },
   "engines": {
     "node": ">=4.0.0"

@@ -1,4 +1,4 @@
-<html class="react-demo"><head class="ap-head"><meta class="ap-head-meta" charset="UTF-8"/><title class="ap-head-title">apeman-react-upload Demo</title><link rel="icon" href="https://raw.githubusercontent.com/apeman-asset-labo/apeman-asset-images/master/dist/favicon/react-favicon.png?v=1.1.1"/><style class="ap-style" type="text/css">.react-demo body {
+<html class="react-demo"><head class="ap-head"><meta class="ap-head-meta" charset="UTF-8"/><title class="ap-head-title">apeman-react-upload Demo</title><link rel="icon" href="https://raw.githubusercontent.com/apeman-asset-labo/apeman-asset-images/master/dist/favicon/react-favicon.png?v=1.1.2"/><style class="ap-style" type="text/css">.react-demo body {
   margin: 0;
   padding: 0;
   color: #555;
@@ -49,6 +49,7 @@
 @media (min-width: 1200px) {  }@media (min-width: 768px) {  }
 @media (min-width: 992px) {  }
 @media (min-width: 1200px) {  }.ap-container{ max-width:1024px;margin:0 auto;display:block;padding:0; }
+.ap-container-relative{ position:relative; }
 @media (min-width: 768px) {  }
 @media (min-width: 992px) {  }
 @media (min-width: 1200px) {  }.ap-tab{ display:flex;background-color:#FFF; }
@@ -95,7 +96,7 @@
 @media (min-width: 768px) {  }
 @media (min-width: 992px) {  }
 @media (min-width: 1200px) {  }.ap-list{ display:block;border:1px solid #EEE;background-color:#FFF;padding:0;margin:8px 0;list-style:none; }
-.ap-list-item{ display:block;border-bottom:1px solid #EEE;padding:0 4px; }
+.ap-list-item{ display:block;border-bottom:1px solid #EEE;min-height:32px;padding:0 4px; }
 .ap-list-item-tappable{ cursor:pointer; }
 .ap-list-item-tappable:hover{ background-color:rgba(200,200,200,0.1); }
 .ap-list-item-tappable:active{ opacity:0.8; }
@@ -172,70 +173,135 @@
 @media (min-width: 1200px) {  }.ap-label{ display:inline-block;padding:4px 8px;font-size:14px;color:#888; }
 @media (min-width: 768px) {  }
 @media (min-width: 992px) {  }
-@media (min-width: 1200px) {  }.ap-text{ display:block;padding:4px 8px;border:1px solid #AAA;margin:4px;width:100%;max-width:480px;border-radius:2px;outline-color:#b35600;box-shadow:1px 1px 1px rgba(0,0,0,.05) inset; }
+@media (min-width: 1200px) {  }.ap-text{ display:block;padding:4px 8px;border:1px solid #AAA;width:100%;max-width:480px;border-radius:2px;box-sizing:border-box;outline-color:#b35600;box-shadow:1px 1px 1px rgba(0,0,0,.05) inset; }
+.ap-text-wrap{ position:relative;width:100%;margin:4px;vertical-align:middle;max-width:480px;display:block; }
 .ap-text-multiple{ overflow:auto; }
 @media (min-width: 768px) {  }
 @media (min-width: 992px) {  }
-@media (min-width: 1200px) {  }.ap-password{ display:block;padding:4px 8px;border:1px solid #AAA;margin:4px;width:100%;max-width:480px;border-radius:2px;outline-color:#b35600;box-shadow:1px 1px 1px rgba(0,0,0,.05) inset; }
-.ap-password-wrap{ position:relative;max-width:480px;display:block; }
+@media (min-width: 1200px) {  }.ap-password{ display:block;padding:4px 8px;border:1px solid #AAA;width:100%;max-width:480px;border-radius:2px;box-sizing:border-box;outline-color:#b35600;box-shadow:1px 1px 1px rgba(0,0,0,.05) inset; }
+.ap-password-wrap{ position:relative;width:100%;margin:4px;vertical-align:middle;max-width:480px;display:block; }
 .ap-password-wrap-empty .ap-password-toggle-button{ opacity:0;pointer-events:none; }
-.ap-password-toggle-button{ position:absolute;z-index:2;top:0;right:-4px;display:inline-block;padding:0 8px;bottom:0;cursor:pointer;opacity:0.8;transition:opacity 200ms; }
+.ap-password-toggle-button{ position:absolute;top:0;right:-4px;display:inline-block;padding:0 8px;bottom:0;cursor:pointer;opacity:0.8;transition:opacity 200ms; }
 .ap-password-toggle-button:hover{ opacity:1; }
 .ap-password-toggle-button:active{ opacity:0.9; }
 .ap-password-toggle-aligner{ display:inline-block;vertical-align:middle;width:1px;margin-right:-1px;height:100%;box-sizing:border-box;opacity:0; }
 .ap-password-toggle-icon{ display:inline-block;vertical-align:middle; }
 @media (min-width: 768px) {  }
 @media (min-width: 992px) {  }
+@media (min-width: 1200px) {  }.ap-upload{ position:relative;display:inline-block;color:#888;overflow:hidden; }
+.ap-upload:hover{ color:#555; }
+.ap-upload:active{ text-shadow:none;opacity:1;color:#777; }
+.ap-upload-label{ position:absolute;z-index:1;text-align:center;box-sizing:border-box;left:0;top:0;right:0;bottom:0;pointer-events:none;background-color:#FFF;box-shadow:inset 1px 1px 2px rgba(0,0,0,0.33);border:1px solid #CCC;border-radius:2px; }
+.ap-upload-input{ opacity:0;display:inline-block;cursor:pointer;position:relative;z-index:2; }
+.ap-upload-icon{ display:block;font-size:2em; }
+.ap-upload-label-inner{ display:inline-block;vertical-align:middle; }
+.ap-upload-aligner{ display:inline-block;width:1px;margin-right:-1px;height:100%;box-sizing:border-box;vertical-align:middle; }
+.ap-upload .ap-spinner{ position:absolute;top:0;left:0;right:0;bottom:0;z-index:8;background-color:#FFF;color:#DDD; }
+.ap-upload-preview-image{ display:inline-block;box-sizing:border-box;z-index:4;position:absolute;left:0;top:0;right:0;bottom:0;pointer-events:none;border:1px solid #AAA; }
+.ap-upload-remove-button{ display:inline-block;position:absolute;right:0;top:0;z-index:5;margin:0px;border:none;padding:8px;font-size:24px;color:#AAA;background:rgba(255,255,255,0.2);border-radius:0px; }
+.ap-upload-remove-button:hover{ opacity:1;box-shadow:none;color:#555; }
+.ap-upload-remove-button:active{ opacity:1;box-shadow:none;color:#555; }
+@media (min-width: 768px) {  }
+@media (min-width: 992px) {  }
 @media (min-width: 1200px) {  }
 
-.ap-captcha{ display:inline-block; }
-.ap-captcha-image{ background:white;border:1px solid #F0F0F0; }
-.ap-captcha-refresh-button{ display:block;text-align:right;cursor:pointer;padding:4px 2px;font-size:12px; }
+.ap-menu{ display:flex;flex-flow:row wrap;justify-content:flex-start;max-width:480px;margin:0 auto; }
+.ap-menu-item{ border:none;background-color:transparent;min-width:86px;text-align:center;color:inherit; }
+.ap-menu-item-hidden{ display:none !important; }
+.ap-menu-item:hover{ cursor:pointer;opacity:0.9; }
+.ap-menu-item:active{ box-shadow:none;opacity:0.66; }
+.ap-menu-end{ flex:auto;display:inline-block;width:0px;opacity:0; }
+@media (min-width: 768px) {  }
+@media (min-width: 992px) {  }
+@media (min-width: 1200px) {  }.ap-info{ box-sizing:border-box;max-width:480px;margin:0 auto; }
+.ap-info-header{ display:block;font-size:9px;padding:2px 16px 1px;vertical-align:middle;position:relative;border-top:1px solid #F0F0F0;border-bottom:1px solid #F0F0F0;margin-bottom:-1px;color:#999;font-weight:100;background:rgba(0, 0, 0, 0.01); }
+.ap-info-body{ display:block;margin:0 8px -1px;overflow:hidden; }
+.ap-info-item{ display:flex;border-bottom:1px solid #F0F0F0;justify-content:space-between;min-height:32px;padding:4px 8px;align-items:center; }
+.ap-info-item-label{ display:inline-block;color:#AAA;vertical-align:middle; }
+.ap-info-item-value{ display:inline-block; }
+.ap-info-item-tappable:hover{ cursor:pointer; }
+.ap-info-item-tappable:active{ opacity:0.8; }
+
+@media (min-width: 768px) {  }
+@media (min-width: 992px) {  }
+@media (min-width: 1200px) {  }.ap-frame{ position:relative; }
+.ap-frame-full{ position:absolute;left:0;top:0;right:0;bottom:0;box-sizing:border-box;overflow:hidden; }
+.ap-frame-spinner{ width:100%;height:100%;position:absolute;text-align:center;box-sizing:content-box;z-index:4;background:rgba(255,255,255,0.8);color:#CCC; }
+.ap-frame-frame{ width:100%;height:100%;box-sizing:content-box; }
+@media (min-width: 768px) {  }
+@media (min-width: 992px) {  }
+@media (min-width: 1200px) {  }.ap-captcha{ display:block;position:relative;background:#FAFAFA;padding:8px;box-sizing:border-box;text-align:center; }
+.ap-captcha-image{ background:white;border:1px solid #E0E0E0; }
+.ap-captcha-image .ap-image-spinner{ background:transparent; }
+.ap-captcha-refresh-button{ display:block;text-align:right;cursor:pointer;padding:4px 8px;position:absolute;font-size:12px;right:0;bottom:0;background:rgba(255,255,255,0.9); }
 .ap-captcha-refresh-button:active{ opacity:0.8; }
+.ap-captcha-spinner{ position:absolute;left:0;top:0;right:0;bottom:0;z-index:4;background:rgba(255,255,255,0.9);color:#CCC; }
 @media (min-width: 768px) {  }
 @media (min-width: 992px) {  }
 @media (min-width: 1200px) {  }.ap-field{ display:block;margin:4px 0; }
 .ap-field-inner{ display:block;max-width:480px; }
-.ap-field-label{ display:block;font-size:12px;padding:4px 8px 0;color:#888;box-sizing:border-box; }
+.ap-field-label{ display:block;font-size:14px;min-width:0;padding:0;margin:0; }
+.ap-field-label-inner{ display:block;font-size:12px;padding:4px 8px 0;color:#888;box-sizing:border-box; }
 .ap-field-value{ display:block;width:100%;padding:0 8px;box-sizing:border-box; }
+.ap-field-value .ap-text-wrap, .ap-field-value .ap-password-wrap{ margin:0px; }
 .ap-field-value .ap-text, .ap-field-value .ap-password{ width:100%;box-sizing:border-box;margin:2px 0; }
 .ap-field-set{ border-style:solid;border-radius:2px; }
+.ap-field-set-plain{ border:none;padding:0;margin:0; }
 .ap-field-legend{ padding:0 4px; }
 .ap-field-align-center .ap-field-inner{ text-align:center;display:block; }
-@media (min-width: 768px) { .ap-field-inner{ display:flex; }
-.ap-field-label{ display:inline-block;min-width:96px;font-size:inherit;padding:8px 8px; }
-.ap-field-value{ padding:4px 8px; } }
+@media (min-width: 768px) { .ap-field-inner{ display:flex;align-items:center; }
+.ap-field-label{ display:inline-block;padding:0;margin:0; }
+.ap-field-label-inner{ display:inline-block;min-width:48px;font-size:inherit;padding:8px 8px; }
+.ap-field-value{ vertical-align:middle;padding:4px 0; } }
 @media (min-width: 992px) {  }
-@media (min-width: 1200px) {  }.ap-toast-group{ position:fixed;display:block;height:1px;top:0;left:0;right:0;text-align:center;padding:4px 0;z-index:49; }
+@media (min-width: 1200px) {  }.ap-toast-group{ position:fixed;height:1px;top:initial;left:0;bottom:24px;right:0;text-align:center;padding:4px 0;z-index:49;display:flex;flex-direction:column;justify-content:flex-end; }
 .ap-toast{ display:block;margin:0 auto; }
-.ap-toast-inner{ margin:4px auto;max-width:420px;display:inline-block;text-align:left;padding:2px 4px;box-shadow:1px 1px 2px rgba(0,0,0,0.33);background-color:rgba(255, 255, 255, 0.8);color:#555;border:1px solid #555;font-size:14px;width:240px; }
+.ap-toast-inner{ margin:4px auto;max-width:420px;display:inline-block;text-align:left;padding:4px;box-shadow:2px 2px 4px rgba(0,0,0,0.33);background-color:rgba(255, 255, 255, 0.95);color:#555;border:4px solid #555;font-size:14px;width:240px;border-radius:2px; }
 .ap-toast-item{ display:block;padding:2px 0; }
 .ap-toast-item:active{ opacity:0.8; }
-.ap-info-toast .ap-toast-inner{ color:#17B917;border:1px solid #17B917; }
-.ap-warn-toast .ap-toast-inner{ color:#929211;border:1px solid #929211; }
-.ap-error-toast .ap-toast-inner{ color:#B31818;border:1px solid #B31818; }
+.ap-info-toast .ap-toast-inner{ color:#0C843A;border-color:#0C843A; }
+.ap-warn-toast .ap-toast-inner{ color:#9C9C19;border-color:#9C9C19; }
+.ap-error-toast .ap-toast-inner{ color:#B31818;border-color:#B31818; }
 .ap-toast-item-icon{ display:inline-block;pointer-events:none; }
 .ap-toast-text{ display:inline-block;pointer-events:none;margin:0 2px;cursor:default; }
 @media (min-width: 768px) {  }
 @media (min-width: 992px) {  }
-@media (min-width: 1200px) {  }.ap-body{ margin:0;padding:0;font-family:Meiryo, sans-serif;color:#555; }
+@media (min-width: 1200px) {  }.ap-body{ margin:0;padding:0;font-family:&quot;ヒラギノ角ゴ ProN W3&quot;, &quot;Hiragino Kaku Gothic ProN&quot;, &quot;メイリオ&quot;, Meiryo, sans-serif;color:#555; }
+@media (min-width: 768px) {  }
+@media (min-width: 992px) {  }
+@media (min-width: 1200px) {  }.ap-dropdown{ position:relative;box-sizing:border-box;display:inline-block; }
+.ap-dropdown-content{ position:absolute;box-sizing:border-box;overflow:hidden;transition:width 400ms, height 400ms;top:44px;left:0px;background:rgba(255,255,255,0.95);width:100%;max-width:480px;border:1px solid #EEE;z-index:99; }
+.ap-dropdown-content-inner{ min-width:192px;min-height:40px; }
+
+.ap-dropdown-closed .ap-dropdown-content{ height:0 !important;border:none; }
+.ap-dropdown-button-wrap{ position:relative; }
+.ap-dropdown-button{ margin:0;padding:0 8px;box-sizing:border-box;vertical-align:middle;border:none;display:block;color:inherit;line-height:44px;background-color:transparent; }
+.ap-dropdown-button-aligner{ height:100%;width:1p;vertical-align:middle; }
+.ap-dropdown-item{ display:block;box-sizing:border-box;text-decoration:none;padding:4px 8px;line-height:36px;border-bottom:1px solid #F0F0F0; }
+.ap-dropdown-item:hover{ cursor:pointer;background:#FAFAFA; }
+.ap-dropdown-item:active{ background:#F0F0F0; }
+.ap-dropdown-icon{ display:inline-block;margin:0 8px;font-size:12px; }
+.ap-dropdown-spinner-cover{ position:absolute;left:0;top:0;right:0;bottom:0;text-align:center;box-sizing:border-box;padding:16px 32px;background:rgba(255, 255, 255, 0.75);border:1px solid rgba(255, 255, 255, 0.9);z-index:101;color:#888; }
 @media (min-width: 768px) {  }
 @media (min-width: 992px) {  }
 @media (min-width: 1200px) {  }.ap-header-space{ display:block;position:relative;width:100%;height:44px;padding:0;margin:0;box-sizing:border-box; }
-.ap-header{ position:fixed;left:0;top:0;height:auto;text-align:left;box-sizing:border-box;width:100%;background:rgba(255,255,255,0.9);border-bottom:1px solid #F0F0F0;z-index:9; }
+.ap-header{ position:fixed;left:0;top:0;height:auto;text-align:left;box-sizing:border-box;width:100%;background:rgba(255,255,255,0.9);z-index:9; }
 .ap-header-back{ position:absolute;left:0;top:0;right:0;z-index:-1;height:44px;border-bottom:1px solid #F0F0F0; }
-.ap-header-logo{ padding:0;margin:0;display:inline-block;font-weight:100;line-height:44px;font-size:29px; }
-.ap-header-logo .ap-header-logo-link,.ap-header-logo .ap-header-logo-link:link{ display:inline-block;padding:0 2px;cursor:default;color:#555555;line-height:44px;text-decoration:none; }
+.ap-header-logo{ padding:0;margin:0;display:inline-block;font-weight:100;line-height:44px;font-size:29px;max-width:100%; }
+.ap-header-logo .ap-header-logo-link,.ap-header-logo .ap-header-logo-link:link{ display:inline-block;padding:0 2px;cursor:default;color:#555555;line-height:44px;max-width:100%;text-decoration:none;word-wrap:break-word; }
 .ap-header-logo .ap-header-logo-link:hover{ text-decoration:none; }
 .ap-header-logo .ap-header-logo-link:active{ opacity:0.8;text-decoration:none; }
 .ap-header-tab-wrap{ display:block;padding:0;margin:0; }
-.ap-header-tab{ display:flex;box-sizing:border-box;font-size:14px;color:#888;height:36px;line-height:36px; }
+.ap-header-tab{ display:flex;box-sizing:border-box;font-size:14px;color:#888;height:36px;line-height:36px;background:transparent; }
 .ap-header-tab-item{ flex:1;padding:0 8px;text-align:center;box-sizing:border-box;cursor:pointer;display:inline-block;text-decoration:none;height:36px;border-color:transparent;border-bottom-width:2px; }
 .ap-header-tab-item:hover{ text-decoration:none; }
 .ap-header-tab-item:active{ color:#b35600;border-color:transparent;opacity:0.66; }
 .ap-header-tab-item-selected,.ap-header-tab-item-selected:hover,.ap-header-tab-item-selected:active{ color:#b35600;border-color:transparent transparent #b35600; }
 .ap-header-menu{ position:relative;float:right;padding:0px; }
 .ap-header-menu-item{ padding:0 8px;margin:4px 8px;font-size:12px;vertical-align:middle;height:36px;line-height:36px; }
+.ap-header-dropdown{ float:right;position:static; }
+.ap-header-dropdown .ap-dropdown-content{ left:auto;right:0px; }
+
 @media (min-width: 768px) { .ap-header-logo{ float:left; }
 .ap-header-tab{ display:inline-block;margin:0 16px;padding:0 8px;height:44px;line-height:44px; }
 .ap-header-tab-item{ flex:initial;height:44px;padding:0 16px; }
@@ -248,7 +314,7 @@
 @media (min-width: 992px) {  }
 @media (min-width: 1200px) {  }.ap-modal{ line-height:1em; }
 .ap-modal .ap-view-stack{ background:rgba(0,0,0,0.2);z-index:44; }
-
+.ap-modal .ap-view-stack .ap-view-stack-inner{ transition:opacity 100ms; }
 @media (min-width: 768px) {  }
 @media (min-width: 992px) {  }
 @media (min-width: 1200px) {  }.ap-dialog{ display:none;background-color:transparent;position:fixed;left:0;right:0;bottom:0;top:0;z-index:39; }
@@ -280,6 +346,23 @@
 .ap-form-centered{ margin:8px auto;max-width:480px; }
 .ap-form-spinner-cover{ position:absolute;left:0;top:0;right:0;bottom:0;text-align:center;box-sizing:border-box;padding:16px 32px;background:rgba(255, 255, 255, 0.75);border:1px solid rgba(255, 255, 255, 0.9);z-index:8;color:#888; }
 .ap-form .ap-form-errored{ border:1px solid #E11;background:#FFF0F0; }
+.ap-form-error-message{ color:#E11;font-size:9px;font-style:italic;padding:4px 0 0;display:none; }
+.ap-form-error-message-visible{ display:block; }
+@media (min-width: 768px) {  }
+@media (min-width: 992px) {  }
+@media (min-width: 1200px) {  }.ap-notice{ display:block;transition:height 300ms;overflow:hidden;font-size:12px;background:rgba(0,0,0,0.75);color:white;position:relative; }
+.ap-notice-spinner{ position:absolute;left:0;right:0;top:0;bottom:0;background-color:rgba(255,255,255,0.5);color:#DDD;text-align:center; }
+
+.ap-notice-item-inner{ display:flex;width:100%;justify-content:space-between;align-items:center;box-sizing:border-box;padding:4px 8px;margin:0 auto;min-height:40px; }
+.ap-notice-item{ display:block; }
+.ap-notice-item-hidden{ display:none !important; }
+.ap-notice-item-action{ white-space:nowrap; }
+.ap-notice-item-text{ font-style:italic; }
+.ap-notice-item-button{ background-color:transparent;height:32px;padding:0 8px;margin:0px;line-height:32px;border:none; }
+.ap-notice-item-info .ap-notice-item-button{ color:#0C843A; }
+.ap-notice-item-warn .ap-notice-item-button{ color:#9C9C19; }
+.ap-notice-item-error .ap-notice-item-button{ color:#B31818; }
+.ap-notice-item-aligner{ display:inline-block;vertical-align:middle;width:1px;margin-right:-1px;opacity:0; }
 @media (min-width: 768px) {  }
 @media (min-width: 992px) {  }
 @media (min-width: 1200px) {  }.ap-slider{ position:relative;height:26px; }
@@ -330,7 +413,7 @@
 @media (min-width: 1200px) {  }.ap-jumbotron{ display:block;box-sizing:border-box;width:100%;padding:32px;margin:0 0 32px;position:relative;color:#FFF; }
 .ap-jumbotron-inner{ position:relative; }
 .ap-jumbotron .ap-image{ background-color:#b35600; }
-.ap-jumbotron h1, .ap-jumbotron-title{ font-size:54px;line-height:54px;margin:8px 0;font-weight:100;text-shadow:0px -1px 0px rgba(0,0,0,.5); }
+.ap-jumbotron h1, .ap-jumbotron-title{ font-size:54px;line-height:54px;margin:8px 0;font-weight:100;text-shadow:0px -1px 0px rgba(0,0,0,.5);word-wrap:break-word; }
 .ap-jumbotron p, .ap-jumbotron-text{ margin:4px 0; }
 .ap-jumbotron-img-container{ position:absolute;left:0;top:0;right:0;bottom:0; }
 .ap-jumbotron-img{ width:100% !important;height:100% !important; }
@@ -341,11 +424,14 @@
 @media (min-width: 768px) {  }
 @media (min-width: 992px) {  }
 @media (min-width: 1200px) {  }.ap-view{ position:relative;overflow:auto; }
+.ap-view-wide .ap-container{ max-width:none; }
+.ap-view-spinner{ position:absolute;left:0;top:0;right:0;bottom:0;z-index:4;background-color:rgba(255,255,255,0.5);color:#888;text-align:center;overflow:hidden;box-sizing:border-box; }
 .ap-view-inner{ position:absolute;left:0;top:0;right:0;bottom:0; }
-.ap-view-header{ position:absolute;left:0;top:0;right:0;height:44px;display:block;line-height:44px;padding:0;margin:0;box-sizing:border-box; }
-.ap-view-header-inner{ display:flex;padding:0;margin:0; }
+.ap-view-header{ position:absolute;left:0;top:0;right:0;height:44px;display:block;line-height:44px;padding:0;margin:0;z-index:1;box-sizing:border-box; }
+.ap-view-header-inner{ display:flex;padding:0;margin:0 auto; }
 .ap-view-header-content{ width:100%;flex:1; }
 .ap-view-body{ padding:52px 8px 8px;margin:0;display:block;background-color:#FFF; }
+.ap-view-body-inner{ margin:0 auto; }
 .ap-view-header-button{ display:inline-block;cursor:pointer;text-align:center;line-height:44px; }
 .ap-view-header-button:hover{ opacity:0.9; }
 .ap-view-header-button:active{ opacity:0.66; }
@@ -358,7 +444,7 @@
 @media (min-width: 1200px) {  }.ap-view-stack{ position:fixed;top:0;left:0;right:0;bottom:0;overflow:hidden; }
 .ap-view-stack-inner{ position:absolute;top:0;left:0;right:0;bottom:0;overflow:hidden;box-sizing:border-box; }
 .ap-view-stack-empty{ left:auto;bottom:auto;width:0 !important;height:0 !important;display:none !important;z-index:-9999; }
-.ap-view-stack .ap-view-wrap{ position:absolute;left:0;top:0;width:100%;height:100%;box-sizing:border-box;border:1px solid #EEE;box-shadow:0 0 4px rgba(0,0,0,0.1);background:white; }
+.ap-view-stack .ap-view-wrap{ position:absolute;left:-1px;top:-1px;width:100%;height:100%;z-index:2;box-sizing:content-box;border:1px solid #EEE;box-shadow:0 0 4px rgba(0,0,0,0.1);background:white; }
 .ap-view-stack .ap-view-wrap .ap-view{ position:absolute;left:0;top:0;right:0;bottom:0;box-sizing:border-box; }
 .ap-view-stack-way-push-left.ap-view-stack-pushing .ap-view-wrap-0{ left:100%;transition:left ease-out 400ms; }
 .ap-view-stack-way-push-left.ap-view-stack-pushing .ap-view-wrap-1{ left:0px;transition:left ease-out 400ms; }
@@ -376,6 +462,58 @@
 .ap-view-stack-way-fade-in.ap-view-stack-pushing-active .ap-view-wrap-0{ opacity:1; }
 .ap-view-stack-way-fade-in.ap-view-stack-popping .ap-view-wrap-0{ opacity:1;transition:opacity ease-out 400ms; }
 .ap-view-stack-way-fade-in.ap-view-stack-popping-active .ap-view-wrap-0{ opacity:0; }
+@media (min-width: 768px) {  }
+@media (min-width: 992px) {  }
+@media (min-width: 1200px) {  }.ap-devtool{ display:block;box-shadow:4px 4px 8px 4px rgba(0,0,0,0.33);border-radius:2px;color:#AAA;background-color:rgba(0,0,0,0.8);border:1px solid rgba(0,0,0,0.8);position:absolute;font-size:12px;right:84px;bottom:64px;z-index:9999;cursor:pointer;box-sizing:border-box;transition:width 400ms, height 400ms;overflow:hidden; }
+.ap-devtool:hover{ opacity:0.98; }
+.ap-devtool:active{ opacity:1; }
+.ap-devtool-closed{ height:36px !important;width:36px !important;border-radius:18px !important; }
+.ap-devtool-closed-handle{ position:absolute;left:-16px;right:-16px;top:-16px;bottom:-16px;display:none;content:; }
+.ap-devtool-closed .ap-devtool-closed-handle{ display:block; }
+
+.ap-devtool-inner{ min-width:192px;min-height:40px;padding:4px 8px; }
+.ap-devtool-caption{ color:#CCC; }
+.ap-devtool-env-label{ display:inline-block; }
+.ap-devtool-env-label-undefined{ color:#FAA; }
+.ap-devtool-env-label-development{ color:#AAF; }
+.ap-devtool-env-label-test{ color:#FFA; }
+.ap-devtool-cell{ padding:2px 4px;border:1px solid #555; }
+th.ap-devtool-cell{ text-align:left;font-width:normal;width:1px; }
+.ap-devtool-version-label{ display:inline-block; }
+.ap-devtool-at-label{ display:inline-block;margin:0 1px; }
+td.ap-devtool-cell{ text-align:right;color:#CCC; }
+.ap-devtool-cell:first-child{ border-left:none; }
+.ap-devtool-cell:last-child{ border-right:none; }
+.ap-devtool-numeric{ text-align:right; }
+.ap-devtool-info-table{ border-collapse:collapse;color:#888;font-size:10px;width:100%;padding:4px;margin:4px 0;box-sizing:border-box; }
+.ap-devtool-info-row:first-child .ap-devtool-cell{ border-top:none; }
+.ap-devtool-info-row:last-child .ap-devtool-cell{ border-bottom:none; }
+@media (min-width: 768px) {  }
+@media (min-width: 992px) {  }
+@media (min-width: 1200px) {  }
+@media (min-width: 768px) {  }
+@media (min-width: 992px) {  }
+@media (min-width: 1200px) {  }
+.ap-signin-form{ max-width:396px; }
+.ap-signin-form-button-field{ margin:8px 0;padding:0 8px; }
+.ap-signin-form-cell-field{ padding:4px 8px; }
+.ap-signin-form-cell-button-row{ font-size:14px;width:100%;margin:8px 0; }
+.ap-signin-form-social-button-row{ padding:0 4px; }
+.ap-signin-form-social-button-row .ap-icon-button-text{ font-size:11px; }
+.ap-signup-form-button-field{ margin:8px 0;padding:0 8px; }
+@media (min-width: 768px) {  }
+@media (min-width: 992px) {  }
+@media (min-width: 1200px) {  }
+.ap-recover-oneline{ display:flex;width:100%;box-sizing:border-box; }
+.ap-recover-oneline .ap-text-wrap,.ap-recover-oneline .ap-password-wrap{ margin:0px; }
+.ap-recover-oneline-input{ width:100%;line-height:32px;box-sizing:border-box;padding:0px; }
+.ap-recover-oneline-input input{ line-height:24px;padding:4px 8px;box-sizing:border-box;margin:0;border-right:none;border-radius:4px 0 0 4px; }
+.ap-recover-oneline-button{ width:80px;padding:0 16px;text-align:center;margin:0;line-height:32px;border-radius:0 4px 4px 0; }
+.ap-recover-fake-input{ display:none !important; }
+@media (min-width: 768px) {  }
+@media (min-width: 992px) {  }
+@media (min-width: 1200px) {  }
+.ap-profile-lead-form-message{ font-size:1em;color:#AAA;padding:32px 16px; }
 @media (min-width: 768px) {  }
 @media (min-width: 992px) {  }
 @media (min-width: 1200px) {  }
@@ -3907,7 +4045,7 @@
 .ap-upload-remove-button:active{ opacity:1;box-shadow:none;color:#555; }
 @media (min-width: 768px) {  }
 @media (min-width: 992px) {  }
-@media (min-width: 1200px) {  }</style></head><body class="ap-body"><div id="demo-style"></div><header class="react-demo-header"><div class="react-demo-container"><h1><a href="https://github.com/apeman-react-labo/apeman-react-upload#readme">apeman-react-upload</a></h1></div></header><main><div><div class="react-demo-playground"><div class="react-demo-container"><div id="demo-wrap"><div><div class="ap-upload"><input type="file" class="ap-upload-input" multiple="" name="file-input-01" id="demo-file-upload-01" accept="image/*" style="width:180px;height:180px;"/><label class="ap-upload-label" for="demo-file-upload-01"><span class="ap-upload-aligner"></span><span class="ap-upload-label-inner"><i class="ap-upload-icon fa fa-cloud-upload"></i><span class="ap-upload-text">Upload file</span></span></label><div class="ap-spinner" style="line-height:28px;font-size:16px;"><span class="ap-spinner-aligner">f</span><span class="ap-spinner-icon fa fa-spin fa-refresh" style="width:16px;height:16px;"></span></div></div><div class="ap-upload"><input type="file" class="ap-upload-input" multiple="" name="file-input-02" id="demo-file-upload-02" accept="image/*" style="width:180px;height:180px;"/><label class="ap-upload-label" for="demo-file-upload-02"><span class="ap-upload-aligner"></span><span class="ap-upload-label-inner"><i class="ap-upload-icon fa fa-cloud-upload"></i><span class="ap-upload-text">Upload file</span></span></label><div class="ap-image ap-upload-preview-image ap-image-loading" style="width:180px;height:180px;left:0%;top:0%;"><img src="https://raw.githubusercontent.com/apeman-asset-labo/apeman-asset-images/master/dist/dummy/12.jpg" alt="NO IMAGE" class="ap-image-content" style="top:90px;left:90px;"/><div class="ap-spinner ap-image-spinner" style="width:180px;height:180px;line-height:28px;font-size:16px;"><span class="ap-spinner-aligner">f</span><span class="ap-spinner-icon fa fa-spin fa-spinner" style="width:16px;height:16px;"></span></div></div><a class="ap-button ap-upload-remove-button"><i class="ap-upload-remove-icon fa fa-close"></i></a><div class="ap-spinner" style="line-height:28px;font-size:16px;"><span class="ap-spinner-aligner">f</span><span class="ap-spinner-icon fa fa-spin fa-refresh" style="width:16px;height:16px;"></span></div></div></div></div></div></div></div><div class="react-demo-container"><div><pre class="react-demo-src"><div><style scoped="scoped">.syntaxhighlighter a,
+@media (min-width: 1200px) {  }</style></head><body class="ap-body"><div id="demo-style"></div><header class="react-demo-header"><div class="react-demo-container"><h1><a href="https://github.com/apeman-react-labo/apeman-react-upload#readme">apeman-react-upload</a></h1></div></header><main><div><div class="react-demo-playground"><div class="react-demo-container"><div id="demo-wrap"><div><div class="ap-upload"><input type="file" class="ap-upload-input" multiple="" name="file-input-01" id="demo-file-upload-01" accept="image/*" style="width:180px;height:180px;"/><label class="ap-upload-label" for="demo-file-upload-01"><span class="ap-upload-aligner"></span><span class="ap-upload-label-inner"><i class="ap-upload-icon fa fa-cloud-upload"></i><span class="ap-upload-text">Upload file</span></span></label><div class="ap-spinner"><span class="ap-spinner-aligner">f</span><span class="ap-spinner-icon fa fa-spin fa-refresh"></span></div></div><div class="ap-upload"><input type="file" class="ap-upload-input" multiple="" name="file-input-02" id="demo-file-upload-02" accept="image/*" style="width:180px;height:180px;"/><label class="ap-upload-label" for="demo-file-upload-02"><span class="ap-upload-aligner"></span><span class="ap-upload-label-inner"><i class="ap-upload-icon fa fa-cloud-upload"></i><span class="ap-upload-text">Upload file</span></span></label><div class="ap-image ap-upload-preview-image ap-image-loading" style="width:180px;height:180px;left:0%;top:0%;"><img src="https://raw.githubusercontent.com/apeman-asset-labo/apeman-asset-images/master/dist/dummy/12.jpg" alt="NO IMAGE" class="ap-image-content" style="top:90px;left:90px;"/><div class="ap-spinner ap-image-spinner" style="width:180px;height:180px;"><span class="ap-spinner-aligner">f</span><span class="ap-spinner-icon fa fa-spin fa-refresh"></span></div></div><a class="ap-button ap-upload-remove-button"><i class="ap-upload-remove-icon fa fa-close"></i></a><div class="ap-spinner"><span class="ap-spinner-aligner">f</span><span class="ap-spinner-icon fa fa-spin fa-refresh"></span></div></div></div></div></div></div></div><div class="react-demo-container"><div><pre class="react-demo-src"><div><style scoped="scoped">.syntaxhighlighter a,
 .syntaxhighlighter div,
 .syntaxhighlighter code,
 .syntaxhighlighter table,
@@ -4219,4 +4357,4 @@
 .syntaxhighlighter .keyword {
   font-weight: bold !important;
 }
-</style><div id="highlighter_795753" class="syntaxhighlighter nogutter  "><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="string">"use strict"</code><code class="plain">;</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="plain">import React from </code><code class="string">'react'</code> <code class="plain">;</code></div><div class="line number4 index3 alt1"><code class="plain">import ApUpload from </code><code class="string">'../../lib/ap_upload'</code><code class="plain">;</code></div><div class="line number5 index4 alt2">&nbsp;</div><div class="line number6 index5 alt1"><code class="plain">const DEMO_IMAGES = [</code></div><div class="line number7 index6 alt2"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="string">'<a href="https://raw.githubusercontent.com/apeman-asset-labo/apeman-asset-images/master/dist/dummy/12.jpg">https://raw.githubusercontent.com/apeman-asset-labo/apeman-asset-images/master/dist/dummy/12.jpg</a>'</code></div><div class="line number8 index7 alt1"><code class="plain">];</code></div><div class="line number9 index8 alt2">&nbsp;</div><div class="line number10 index9 alt1"><code class="plain">let Demo = React.createClass({</code></div><div class="line number11 index10 alt2"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">render() {</code></div><div class="line number12 index11 alt1"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">let s = </code><code class="keyword">this</code><code class="plain">;</code></div><div class="line number13 index12 alt2"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">return</code> <code class="plain">(</code></div><div class="line number14 index13 alt1"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">&lt;</code><code class="keyword">div</code><code class="plain">></code></div><div class="line number15 index14 alt2"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">&lt;</code><code class="keyword">ApUpload</code> <code class="plain">multiple={</code><code class="keyword">true</code><code class="plain">}</code></div><div class="line number16 index15 alt1"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="color1">id</code><code class="plain">=</code><code class="string">"demo-file-upload-01"</code></div><div class="line number17 index16 alt2"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="color1">name</code><code class="plain">=</code><code class="string">"file-input-01"</code></div><div class="line number18 index17 alt1"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="color1">accept</code><code class="plain">=</code><code class="string">"image/*"</code></div><div class="line number19 index18 alt2"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">onLoad={s.handleLoaded}></code></div><div class="line number20 index19 alt1"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">&lt;/</code><code class="keyword">ApUpload</code><code class="plain">></code></div><div class="line number21 index20 alt2">&nbsp;</div><div class="line number22 index21 alt1"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">&lt;</code><code class="keyword">ApUpload</code> <code class="plain">multiple={</code><code class="keyword">true</code><code class="plain">}</code></div><div class="line number23 index22 alt2"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="color1">id</code><code class="plain">=</code><code class="string">"demo-file-upload-02"</code></div><div class="line number24 index23 alt1"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="color1">name</code><code class="plain">=</code><code class="string">"file-input-02"</code></div><div class="line number25 index24 alt2"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="color1">accept</code><code class="plain">=</code><code class="string">"image/*"</code></div><div class="line number26 index25 alt1"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">value={DEMO_IMAGES}</code></div><div class="line number27 index26 alt2"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">onLoad={s.handleLoaded}></code></div><div class="line number28 index27 alt1"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">&lt;/</code><code class="keyword">ApUpload</code><code class="plain">></code></div><div class="line number29 index28 alt2"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">&lt;/</code><code class="keyword">div</code><code class="plain">></code></div><div class="line number30 index29 alt1"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">);</code></div><div class="line number31 index30 alt2"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">},</code></div><div class="line number32 index31 alt1"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">handleLoaded(ev){</code></div><div class="line number33 index32 alt2"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">let files = ev.target && ev.target.result;</code></div><div class="line number34 index33 alt1"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">console.log(</code><code class="string">'files'</code><code class="plain">, files);</code></div><div class="line number35 index34 alt2"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">}</code></div><div class="line number36 index35 alt1"><code class="plain">});</code></div><div class="line number37 index36 alt2">&nbsp;</div><div class="line number38 index37 alt1"><code class="plain">module.exports = Demo;</code></div></div></td></tr></tbody></table></div></div></pre></div></div></main><footer><div class="react-demo-container"><ul class="ap-links"><li class="ap-links-item"><a href="https://github.com/apeman-labo/apeman">apeman</a></li><li class="ap-links-item"><a href="https://github.com/apeman-react-labo">apeman-react-labo</a></li><li class="ap-links-item"><a href="https://facebook.github.io/react/">React</a></li></ul></div></footer><script src="./demo.js"></script></body></html>
+</style><div id="highlighter_501520" class="syntaxhighlighter nogutter  "><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="string">"use strict"</code><code class="plain">;</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="plain">import React from </code><code class="string">'react'</code> <code class="plain">;</code></div><div class="line number4 index3 alt1"><code class="plain">import ApUpload from </code><code class="string">'../../lib/ap_upload'</code><code class="plain">;</code></div><div class="line number5 index4 alt2">&nbsp;</div><div class="line number6 index5 alt1"><code class="plain">const DEMO_IMAGES = [</code></div><div class="line number7 index6 alt2"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="string">'<a href="https://raw.githubusercontent.com/apeman-asset-labo/apeman-asset-images/master/dist/dummy/12.jpg">https://raw.githubusercontent.com/apeman-asset-labo/apeman-asset-images/master/dist/dummy/12.jpg</a>'</code></div><div class="line number8 index7 alt1"><code class="plain">];</code></div><div class="line number9 index8 alt2">&nbsp;</div><div class="line number10 index9 alt1"><code class="plain">let Demo = React.createClass({</code></div><div class="line number11 index10 alt2"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">render() {</code></div><div class="line number12 index11 alt1"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">let s = </code><code class="keyword">this</code><code class="plain">;</code></div><div class="line number13 index12 alt2"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">return</code> <code class="plain">(</code></div><div class="line number14 index13 alt1"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">&lt;</code><code class="keyword">div</code><code class="plain">></code></div><div class="line number15 index14 alt2"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">&lt;</code><code class="keyword">ApUpload</code> <code class="plain">multiple={</code><code class="keyword">true</code><code class="plain">}</code></div><div class="line number16 index15 alt1"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="color1">id</code><code class="plain">=</code><code class="string">"demo-file-upload-01"</code></div><div class="line number17 index16 alt2"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="color1">name</code><code class="plain">=</code><code class="string">"file-input-01"</code></div><div class="line number18 index17 alt1"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="color1">accept</code><code class="plain">=</code><code class="string">"image/*"</code></div><div class="line number19 index18 alt2"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">onLoad={s.handleLoaded}></code></div><div class="line number20 index19 alt1"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">&lt;/</code><code class="keyword">ApUpload</code><code class="plain">></code></div><div class="line number21 index20 alt2">&nbsp;</div><div class="line number22 index21 alt1"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">&lt;</code><code class="keyword">ApUpload</code> <code class="plain">multiple={</code><code class="keyword">true</code><code class="plain">}</code></div><div class="line number23 index22 alt2"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="color1">id</code><code class="plain">=</code><code class="string">"demo-file-upload-02"</code></div><div class="line number24 index23 alt1"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="color1">name</code><code class="plain">=</code><code class="string">"file-input-02"</code></div><div class="line number25 index24 alt2"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="color1">accept</code><code class="plain">=</code><code class="string">"image/*"</code></div><div class="line number26 index25 alt1"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">value={DEMO_IMAGES}</code></div><div class="line number27 index26 alt2"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">onLoad={s.handleLoaded}></code></div><div class="line number28 index27 alt1"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">&lt;/</code><code class="keyword">ApUpload</code><code class="plain">></code></div><div class="line number29 index28 alt2"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">&lt;/</code><code class="keyword">div</code><code class="plain">></code></div><div class="line number30 index29 alt1"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">);</code></div><div class="line number31 index30 alt2"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">},</code></div><div class="line number32 index31 alt1"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">handleLoaded(ev){</code></div><div class="line number33 index32 alt2"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">let files = ev.target && ev.target.result;</code></div><div class="line number34 index33 alt1"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">console.log(</code><code class="string">'files'</code><code class="plain">, files);</code></div><div class="line number35 index34 alt2"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">}</code></div><div class="line number36 index35 alt1"><code class="plain">});</code></div><div class="line number37 index36 alt2">&nbsp;</div><div class="line number38 index37 alt1"><code class="plain">module.exports = Demo;</code></div></div></td></tr></tbody></table></div></div></pre></div></div></main><footer><div class="react-demo-container"><ul class="ap-links"><li class="ap-links-item"><a href="https://github.com/apeman-labo/apeman">apeman</a></li><li class="ap-links-item"><a href="https://github.com/apeman-react-labo">apeman-react-labo</a></li><li class="ap-links-item"><a href="https://facebook.github.io/react/">React</a></li></ul></div></footer><script src="./demo.js"></script></body></html>
