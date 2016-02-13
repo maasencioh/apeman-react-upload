@@ -140,7 +140,8 @@ let ApUpload = React.createClass({
     handleChange(e){
         let s = this,
             {props} = s,
-            files = Array.prototype.slice.call(e.target.files, 0);
+            {target} = e,
+            files = Array.prototype.slice.call(target.files, 0);
 
         let {onChange, onError, onLoad} = props;
 
@@ -150,6 +151,7 @@ let ApUpload = React.createClass({
         }
         async.concat(files, ApUpload.readFile, (err, urls) => {
             e.urls = urls;
+            e.target = target;
             s.setState({
                 spinning: false,
                 error: err,

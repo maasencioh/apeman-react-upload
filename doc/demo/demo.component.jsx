@@ -30,8 +30,7 @@ let Demo = React.createClass({
         );
     },
     handleLoaded(ev){
-        let files = ev.target && ev.target.result;
-        console.log('files', files);
+        console.log('result', ev.target, ev.urls);
     }
 });
 
