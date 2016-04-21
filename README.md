@@ -157,7 +157,7 @@ Components
 | icon | string | 'fa fa-cloud-upload' | Guide icon |
 | closeIcon | string | 'fa fa-close' | Icon for close images |
 | spinner | string |  | Spinner theme |
-| value | string[object Object]array |  | Value of input |
+| value | string&#124;array |  | Value of input |
 | spinnerIcon |  | ApSpinner.DEFAULT_THEME |  |
 
 
