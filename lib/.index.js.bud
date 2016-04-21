@@ -2,10 +2,10 @@
  * Bud file for index.js
  */
 
-"use strict";
+'use strict'
 
 const apeTmpl = require('ape-tmpl'),
-    pkg = require('../package.json');
+    pkg = require('../package.json')
 
 module.exports = apeTmpl.indexJsBud({
     module: pkg.name,
@@ -15,8 +15,8 @@ module.exports = apeTmpl.indexJsBud({
         'ApUpload',
         'ApUploadStyle'
     ]
-});
+})
 
 if (!module.parent) {
-    require('coz').render(__filename);
+    require('coz').render(__filename)
 }

@@ -1,21 +1,16 @@
 Components
 -----
 
-### ApUpload
+{{#each vars.components}}
+
+### {{{@key}}}
 
 **Props**
 
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
-
-
-
-### ApUploadStyle
-
-**Props**
-
-| Name | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| scoped | bool | false | Render as scoped style. |
-| style | object | {} | Style object. |
+{{#each props}}
+| {{@key}} | {{{type.name}}} | {{{defaultValue.value}}} | {{description}} |
+{{/each}}
+{{/each}}
 
