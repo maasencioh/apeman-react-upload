@@ -1,6 +1,6 @@
 {
   "name": "apeman-react-upload",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "apeman react package for file upload components.",
   "main": "lib",
   "scripts": {
@@ -58,8 +58,8 @@
     "react-dom": "^15.0.1"
   },
   "peerDependencies": {
-    "react": ">15.0.1",
-    "react-dom": ">15.0.1"
+    "react": ">=15.0.1",
+    "react-dom": ">=15.0.1"
   },
   "engines": {
     "node": ">=4.0.0"
