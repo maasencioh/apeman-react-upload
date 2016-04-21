@@ -4,19 +4,19 @@
 
 'use strict'
 
-const apeTmpl = require('ape-tmpl'),
-    pkg = require('../package.json')
+const apeTmpl = require('ape-tmpl')
+const pkg = require('../package.json')
 
 module.exports = apeTmpl.indexJsBud({
-    module: pkg.name,
-    desc: pkg.description,
-    dirname: __dirname,
-    subclasses: [
-        'ApUpload',
-        'ApUploadStyle'
-    ]
+  module: pkg.name,
+  desc: pkg.description,
+  dirname: __dirname,
+  subclasses: [
+    'ApUpload',
+    'ApUploadStyle'
+  ]
 })
 
 if (!module.parent) {
-    require('coz').render(__filename)
+  require('coz').render(__filename)
 }

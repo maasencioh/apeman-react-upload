@@ -1,4 +1,4 @@
-<html class="react-demo"><head class="ap-head"><meta class="ap-head-meta" charset="UTF-8"/><title class="ap-head-title">apeman-react-upload Demo</title><link rel="icon" href="https://raw.githubusercontent.com/apeman-asset-labo/apeman-asset-images/master/dist/favicon/react-favicon.png?v=1.1.4"/><style class="ap-style" type="text/css">.react-demo body {
+<html class="react-demo"><head class="ap-head"><meta class="ap-head-meta" charset="UTF-8"/><title class="ap-head-title">apeman-react-upload Demo</title><link rel="icon" href="https://raw.githubusercontent.com/apeman-asset-labo/apeman-asset-images/master/dist/favicon/react-favicon.png?v=2.0.0"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/><style class="ap-style" type="text/css">.react-demo body {
   margin: 0;
   padding: 0;
   color: #555;
@@ -50,6 +50,7 @@
 @media (min-width: 992px) {  }
 @media (min-width: 1200px) {  }.ap-container{ max-width:1024px;margin:0 auto;display:block;padding:0; }
 .ap-container-relative{ position:relative; }
+.ap-container-centered{ margin:0 auto;text-align:center; }
 @media (min-width: 768px) {  }
 @media (min-width: 992px) {  }
 @media (min-width: 1200px) {  }.ap-tab{ display:flex;background-color:#FFF; }
@@ -95,27 +96,51 @@
 .ap-tag-text{ display:inline-block;margin:0 2px 0 0; }
 @media (min-width: 768px) {  }
 @media (min-width: 992px) {  }
-@media (min-width: 1200px) {  }.ap-list{ display:block;border:1px solid #EEE;background-color:#FFF;padding:0;margin:8px 0;list-style:none; }
+@media (min-width: 1200px) {  }.ap-list{ display:block;padding:0;margin:8px 0;list-style:none;position:relative;min-height:48px; }
+.ap-list-spinner{ position:absolute;left:0;top:0;bottom:0;right:0;z-index:4;background-color:rgba(255,255,255,0.8); }
 .ap-list-item{ display:block;border-bottom:1px solid #EEE;min-height:32px;padding:0 4px; }
 .ap-list-item-tappable{ cursor:pointer; }
 .ap-list-item-tappable:hover{ background-color:rgba(200,200,200,0.1); }
 .ap-list-item-tappable:active{ opacity:0.8; }
-.ap-list-item-inner{ display:flex; }
+.ap-list-item-inner{ display:flex;align-content:center;justify-content:flex-end; }
 .ap-list-item-icon{ padding:0 4px; }
 .ap-list-item-text{ display:inline-block;padding:0 8px;width:100%; }
 .ap-list-item-aligner{ display:inline-block;opacity:0;width:1px;overflow:hidden;white-space:pre;color:transparent;vertical-align:middle; }
 .ap-list-item-arrow-icon{ color:#AAA;font-size:24px; }
-.ap-list-item-sumbnail-image{ margin-left:-4px;width:128px;box-sizing:border-box; }
+.ap-list-item-sumbnail-image{ margin-left:-4px; }
+.ap-list-header{ display:block;font-size:9px;padding:2px 12px 1px;vertical-align:middle;position:relative;border-top:1px solid #F0F0F0;border-bottom:1px solid #F0F0F0;margin-bottom:-1px;color:#999;font-weight:100;background:rgba(0, 0, 0, 0.01); }
+.ap-list-body{ display:block;margin:0 0 -1px;overflow:hidden; }
+.ap-list-footer{ display:block;position:relative; }
+.ap-list-footer-spinner{ position:absolute;left:0;top:0;bottom:0;right:0;z-index:4;background-color:rgba(255,255,255,0.8); }
+.ap-list-more-button{ display:none;text-align:center;padding:16px 0;font-size:11px;color:#888;background:rgba(0, 0, 0, 0.01);border-top:1px solid #EEE; }
+.ap-list-more-button:hover{ cursor:pointer;opacity:0.9; }
+.ap-list-more-button:active{ cursor:pointer;opacity:0.66; }
+.ap-list-more-button-enabled{ display:block; }
+.ap-list-item-title-wrap{ display:inline-flex;justify-content:center;flex-direction:column; }
+.ap-list-item-title{ display:block;line-height:initial; }
+.ap-list-item-sub-title{ display:block;font-size:9px;line-height:initial;color:#AAA; }
+.ap-list-empty .ap-list-body{ background:#F5F5F5; }
+.ap-list-empty .ap-list-alt{ display:block; }
+.ap-list-alt{ display:none;text-align:center;padding:32px 8px;color:#CCC; }
+.ap-list-bar{ display:flex;margin:0;padding:0 8px;background:transparent;justify-content:space-between; }
+.ap-list-bar .ap-form{ margin:0;display:inline-flex;align-items:center; }
+.ap-list-bar-message{ line-height:36px;font-size:smaller;display:inline-block;padding:0 4px;color:#888; }
 @media (min-width: 768px) {  }
 @media (min-width: 992px) {  }
-@media (min-width: 1200px) {  }.ap-button{ display:inline-block;box-sizing:border-box;padding:0.5em 1em;border-radius:2px;margin:4px;color:#b35600;border:1px solid #b35600;background:#FFF;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;-user-select:none; }
+@media (min-width: 1200px) {  }.ap-button{ display:inline-block;box-sizing:border-box;padding:0.5em 1em;border-radius:2px;margin:4px;color:#b35600;border:1px solid #b35600;background:#FFF;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;-user-select:none;white-space:nowrap; }
+.ap-big-button{ border-radius:50%;display:inline-flex;align-items:center;justify-content:center;border-width:4px;padding:0;box-shadow:2px 2px 4px rgba(0,0,0,0.2);white-space:normal; }
+.ap-big-button:active{ box-shadow:none; }
 .ap-button > *{ pointer-events:none; }
 .ap-button:hover{ cursor:pointer;opacity:0.9; }
 .ap-button:active{ box-shadow:1px 1px 2px rgba(0,0,0,0.1) inset;opacity:0.8; }
-.ap-button.ap-button-disabled,.ap-button.ap-button-disabled:hover,.ap-button.ap-button-disabled:active{ cursor:default;box-shadow:none;color:#888;border-color:#888;background-color:#F0F0F0; }
+.ap-button.ap-button-disabled,.ap-button.ap-button-disabled:hover,.ap-button.ap-button-disabled:active{ cursor:default;box-shadow:none;color:#AAA;border-color:#AAA;background-color:#F0F0F0; }
 .ap-button-primary{ color:white;background:#b35600; }
+.ap-button-danger{ color:white;background:#B31818; }
 .ap-button-wide{ width:100%;box-sizing:border-box;max-width:240px;margin-left:0;margin-right:0; }
-.ap-icon-button{ text-align:center;display:inline-block; }
+.ap-icon-button{ text-align:center;display:inline-block;justify-content:inherit;flex-direction:column;align-items:center; }
+.ap-icon-button-simple{ border:none;background:transparent; }
+.ap-icon-button-simple:active{ box-shadow:none;opacity:0.8; }
+.ap-icon-button-simple .ap-icon-button-icon{ font-size:inherit; }
 .ap-icon-button-icon{ margin:2px 0;display:block;font-size:2em; }
 .ap-icon-button-text{ display:block;font-size:0.66em;padding:2px 0; }
 .ap-icon-button-row{ display:flex;max-width:480px;margin:0 auto; }
@@ -127,6 +152,13 @@
 .ap-cell-button-row .ap-cell-button{ border-right-color:transparent;border-bottom-color:transparent;width:100%; }
 .ap-cell-button-row .ap-cell-button:first-child{ border-left-color:transparent; }
 .ap-cell-button-row .ap-button{ display:block;width:100%; }
+.ap-next-button,.ap-prev-button{ padding:0.25em 1em; }
+.ap-next-button-icon{ margin-left:4px;margin-right:0; }
+.ap-prev-button-icon{ margin-left:0;margin-right:4px; }
+.ap-button-hidden{ display:none !important; }
+.ap-button-simple{ border:none;background:transparent; }
+.ap-button-simple:active{ box-shadow:none;opacity:0.8; }
+.ap-button-group{ display:inline-flex;align-items:center;justify-content:center; }
 @media (min-width: 768px) {  }
 @media (min-width: 992px) {  }
 @media (min-width: 1200px) {  }.ap-checkbox{ display:inline-block;padding:0 4px;cursor:pointer;position:relative; }
@@ -154,9 +186,16 @@
 @media (min-width: 1200px) {  }.ap-article{ padding:16px 0; }
 @media (min-width: 768px) {  }
 @media (min-width: 992px) {  }
+@media (min-width: 1200px) {  }.ap-article{ padding:16px 0; }
+@media (min-width: 768px) {  }
+@media (min-width: 992px) {  }
 @media (min-width: 1200px) {  }.ap-section{ display:block;margin:0 0 32px; }
 .ap-section-header{ display:block;padding-bottom:8px;font-size:36px;line-height:36px;margin:0 0 16px;position:relative;font-weight:normal; }
+.ap-section-header-lined{ font-size:14px;border-bottom:1px solid #F0F0F0;line-height:16px;padding:0 4px;margin-bottom:4px;color:#999; }
 .ap-section-header:hover .ap-section-anchor{ opacity:0.6; }
+.ap-section-header-button{ display:inline-flex;color:#b35600;position:absolute;right:0;top:0;bottom:0;padding:0 4px;justify-content:center;align-items:center;cursor:pointer; }
+
+.ap-section-header-button:active{ opacity:0.9; }
 .ap-section-anchor{ cursor:pointer;box-sizing:border-box;position:absolute;left:-22px;text-align:center;transition:opacity 300ms;top:0;opacity:0; }
 .ap-section-anchor-disabled{ display:none !important; }
 .ap-section-anchor:hover{ opacity:1; }
@@ -170,22 +209,68 @@
 .ap-aside-box{ border:1px solid #EEE;padding:16px; }
 @media (min-width: 768px) {  }
 @media (min-width: 992px) {  }
-@media (min-width: 1200px) {  }.ap-label{ display:inline-block;padding:4px 8px;font-size:14px;color:#888; }
+@media (min-width: 1200px) {  }.ap-draggable{ cursor:-webkit-grab;transition:transform 80ms; }
+.ap-draggable:active{ cursor:-webkit-grabbing; }
+.ap-draggable.ap-draggable-dragging{ box-shadow:1px 1px 2px rgba(0,0,0,0.25); }
 @media (min-width: 768px) {  }
 @media (min-width: 992px) {  }
 @media (min-width: 1200px) {  }.ap-text{ display:block;padding:4px 8px;border:1px solid #AAA;width:100%;max-width:480px;border-radius:2px;box-sizing:border-box;outline-color:#b35600;box-shadow:1px 1px 1px rgba(0,0,0,.05) inset; }
 .ap-text-wrap{ position:relative;width:100%;margin:4px;vertical-align:middle;max-width:480px;display:block; }
 .ap-text-multiple{ overflow:auto; }
+.ap-text-candidate-list{ position:absolute;left:0;right:1px;top:100%;z-index:4;padding:4px 0;margin:0 1px;box-shadow:1px 1px 2px rgba(0,0,0,0.33);background:white;box-sizing:border-box; }
+.ap-text-candidate-list-item{ display:block;padding:0;margin:0; }
+.ap-text-candidate-list-item a{ display:block;padding:4px 8px; }
+.ap-text-candidate-list-item a:hover{ cursor:pointer;background:#FAFAFA; }
+.ap-text-candidate-list-item a:active{ background:#F5F5F5; }
+.ap-text-candidate-list-item-selected a{ background:rgba(179,86,0,0.33); }
+.ap-text-candidate-list-item-selected a:hover{ background:rgba(179,86,0,0.5); }
+.ap-text-candidate-list-item-selected a:active{ background:rgba(179,86,0,0.2); }
+@media (min-width: 768px) {  }
+@media (min-width: 992px) {  }
+@media (min-width: 1200px) {  }.ap-select-wrap{ position:relative;box-sizing:border-box;display:inline-block; }
+.ap-select,.ap-select-dummy-text{ opacity:0;z-index:-99;position:absolute;display:block;width:1px;height:1px;overflow:hidden; }
+.ap-select-options-list{ padding:0;margin:0;z-index:24;position:absolute;left:0;top:0;width:100%;display:none;box-sizing:border-box;background:transparent;box-shadow:none;border:none; }
+.ap-select-options-list-inner{ padding:0;margin:0;background:white;border:1px solid #F0F0F0;box-shadow:2px 2px 4px rgba(0,0,0,0.22);border-radius:2px;width:100%;min-width:240px;overflow:auto; }
+.ap-select-options-list-visible{ display:block; }
+.ap-select-options-list-item{ display:block;list-style:none;padding:0;margin:0; }
+.ap-select-item{ display:block;padding:4px 8px;font-size:smaller;cursor:pointer;white-space:nowrap;text-overflow:ellipsis;overflow:hidden; }
+.ap-select-item-focused, .ap-select-item-focused:hover, .ap-select-item-focused:active{ text-decoration:none;background-color:#b35600;color:white; }
+.ap-select-item:hover{ text-decoration:none;background-color:rgba(179,86,0,0.9);color:white; }
+.ap-select-item:active{ opacity:0.9; }
+.ap-select-label{ vertical-align:middle;display:inline-flex;align-items:center;padding:4px 2px 4px 8px;color:inherit;font-size:smaller;min-height:28px;min-width:240px;max-width:480px;cursor:pointer;background:white;box-sizing:border-box;border-radius:2px;border:1px solid #CCC;justify-content:space-between; }
+.ap-select-label:hover{ background:#FAFAFA; }
+.ap-select-label:active{ background:#F0F0F0; }
+.ap-select-label-text{ padding:0 4px; }
+.ap-select-label-placeholder{ color:#CCC; }
 @media (min-width: 768px) {  }
 @media (min-width: 992px) {  }
 @media (min-width: 1200px) {  }.ap-password{ display:block;padding:4px 8px;border:1px solid #AAA;width:100%;max-width:480px;border-radius:2px;box-sizing:border-box;outline-color:#b35600;box-shadow:1px 1px 1px rgba(0,0,0,.05) inset; }
 .ap-password-wrap{ position:relative;width:100%;margin:4px;vertical-align:middle;max-width:480px;display:block; }
 .ap-password-wrap-empty .ap-password-toggle-button{ opacity:0;pointer-events:none; }
-.ap-password-toggle-button{ position:absolute;top:0;right:-4px;display:inline-block;padding:0 8px;bottom:0;cursor:pointer;opacity:0.8;transition:opacity 200ms; }
+.ap-password-toggle-button{ position:absolute;top:0;right:-4px;display:inline-flex;align-items:center;padding:0 8px;bottom:0;cursor:pointer;opacity:0.8;transition:opacity 200ms; }
 .ap-password-toggle-button:hover{ opacity:1; }
 .ap-password-toggle-button:active{ opacity:0.9; }
 .ap-password-toggle-aligner{ display:inline-block;vertical-align:middle;width:1px;margin-right:-1px;height:100%;box-sizing:border-box;opacity:0; }
 .ap-password-toggle-icon{ display:inline-block;vertical-align:middle; }
+@media (min-width: 768px) {  }
+@media (min-width: 992px) {  }
+@media (min-width: 1200px) {  }.ap-search{ display:block;padding:4px 8px 4px 22px;border:1px solid #AAA;width:100%;max-width:480px;border-radius:2px;box-sizing:border-box;outline-color:#b35600;box-shadow:1px 1px 1px rgba(0,0,0,.05) inset;transition:opacity 400ms;transition-delay:120ms; }
+.ap-search-wrap{ position:relative;width:100%;margin:4px;vertical-align:middle;max-width:480px;display:block;transition:width 400ms, max-width 400ms; }
+.ap-search-wrap-empty .ap-search-clear-button{ opacity:0;pointer-events:none; }
+.ap-search-search-button{ position:absolute;top:0;left:-4px;display:inline-flex;align-items:center;padding:0 8px;bottom:0;cursor:pointer;color:#CCC;z-index:4;transition:color 400ms, transform 400ms;transform:scale(1, 1);transform-origin:50% 50%; }
+.ap-search-search-button:active{ opacity:0.9; }
+.ap-search-search-icon{ display:inline-block;vertical-align:middle; }
+.ap-search-clear-button{ position:absolute;top:0;right:-4px;display:inline-flex;align-items:center;padding:0 8px;bottom:0;cursor:pointer;opacity:0.8;color:#CCC; }
+.ap-search-clear-button:hover{ opacity:0.99; }
+.ap-search-clear-button:active{ opacity:0.6; }
+.ap-search-aligner{ display:inline-block;vertical-align:middle;width:1px;margin-right:-1px;height:100%;box-sizing:border-box;opacity:0; }
+.ap-search-clear-icon{ display:inline-block;vertical-align:middle;font-size:11px;padding:2px; }
+.ap-search-wrap-closed{ width:24px;max-width:24px; }
+.ap-search-wrap-closed .ap-search-clear-icon{ display:none; }
+.ap-search-wrap-closed .ap-search{ opacity:0;transition-delay:0; }
+.ap-search-wrap-closed .ap-search-search-button{ color:#b35600;transform:scale(1.2, 1.2); }
+.ap-search-wrap-closed .ap-search-search-button:hover{ color:#b35600;transform:scale(1.4, 1.4); }
+.ap-search-wrap-righted{ margin:0 0 0 auto; }
 @media (min-width: 768px) {  }
 @media (min-width: 992px) {  }
 @media (min-width: 1200px) {  }.ap-upload{ position:relative;display:inline-block;color:#888;overflow:hidden; }
@@ -203,9 +288,22 @@
 .ap-upload-remove-button:active{ opacity:1;box-shadow:none;color:#555; }
 @media (min-width: 768px) {  }
 @media (min-width: 992px) {  }
+@media (min-width: 1200px) {  }.ap-toggle{ border-radius:4px; }
+.ap-toggle-item{ color:#b35600;border:1px solid #b35600;margin:0 -1px 0 0;background:transparent; }
+.ap-toggle-item:first-child{ border-radius:4px 0 0 4px; }
+.ap-toggle-item:last-child{ border-radius:0 4px 4px 0; }
+.ap-toggle-item-active{ background:#b35600;color:white; }
+@media (min-width: 768px) {  }
+@media (min-width: 992px) {  }
 @media (min-width: 1200px) {  }
 
-
+.ap-links-item a{ display:inline-block;padding:2px 8px; }
+.ap-links-plain{ list-style:none;padding:0;margin:0; }
+.ap-links-plain a{ text-decoration:underline;color:#AAA; }
+.ap-links-righted{ text-align:right; }
+@media (min-width: 768px) {  }
+@media (min-width: 992px) {  }
+@media (min-width: 1200px) {  }.ap-scroll{ overflow:hidden; }
 @media (min-width: 768px) {  }
 @media (min-width: 992px) {  }
 @media (min-width: 1200px) {  }.ap-menu{ display:flex;flex-flow:row wrap;justify-content:flex-start;max-width:480px;margin:0 auto; }
@@ -222,9 +320,14 @@
 .ap-info-item{ display:flex;border-bottom:1px solid #F0F0F0;justify-content:space-between;min-height:32px;padding:4px 8px;align-items:center; }
 .ap-info-item-label{ display:inline-block;color:#AAA;vertical-align:middle; }
 .ap-info-item-value{ display:inline-block; }
+.ap-info-item-value-text{ vertical-align:middle; }
 .ap-info-item-tappable:hover{ cursor:pointer; }
 .ap-info-item-tappable:active{ opacity:0.8; }
 
+.ap-info-item-link{ text-decoration:underline;margin-left:4px;vertical-align:middle;display:inline-block;color:#b35600; }
+.ap-info-left{ margin-left:0; }
+.ap-info-right{ margin-right:0; }
+.ap-info-item-unit{ font-size:x-small;vertical-align:bottom;display:inline-block;font-weight:100;margin-left:4px; }
 @media (min-width: 768px) {  }
 @media (min-width: 992px) {  }
 @media (min-width: 1200px) {  }.ap-frame{ position:relative; }
@@ -246,7 +349,7 @@
 .ap-field-label{ display:block;font-size:14px;min-width:0;padding:0;margin:0; }
 .ap-field-label-inner{ display:block;font-size:12px;padding:4px 8px 0;color:#888;box-sizing:border-box; }
 .ap-field-value{ display:block;width:100%;padding:0 8px;box-sizing:border-box; }
-.ap-field-value .ap-text-wrap, .ap-field-value .ap-password-wrap{ margin:0px; }
+.ap-field-value .ap-text-wrap, .ap-field-value .ap-password-wrap{ margin:0; }
 .ap-field-value .ap-text, .ap-field-value .ap-password{ width:100%;box-sizing:border-box;margin:2px 0; }
 .ap-field-set{ border-style:solid;border-radius:2px; }
 .ap-field-set-plain{ border:none;padding:0;margin:0; }
@@ -257,7 +360,7 @@
 .ap-field-label-inner{ display:inline-block;min-width:48px;font-size:inherit;padding:8px 8px; }
 .ap-field-value{ vertical-align:middle;padding:4px 0; } }
 @media (min-width: 992px) {  }
-@media (min-width: 1200px) {  }.ap-toast-group{ position:fixed;height:1px;top:initial;left:0;bottom:24px;right:0;text-align:center;padding:4px 0;z-index:49;display:flex;flex-direction:column;justify-content:flex-end; }
+@media (min-width: 1200px) {  }.ap-toast-group{ position:fixed;height:0px;top:initial;overflow:visible;left:0;bottom:24px;right:0;text-align:center;padding:0px;z-index:49;display:flex;flex-direction:column;justify-content:flex-end; }
 .ap-toast{ display:block;margin:0 auto; }
 .ap-toast-inner{ margin:4px auto;max-width:420px;display:inline-block;text-align:left;padding:4px;box-shadow:2px 2px 4px rgba(0,0,0,0.33);background-color:rgba(255, 255, 255, 0.95);color:#555;border:4px solid #555;font-size:14px;width:240px;border-radius:2px; }
 .ap-toast-item{ display:block;padding:2px 0; }
@@ -273,7 +376,7 @@
 @media (min-width: 768px) {  }
 @media (min-width: 992px) {  }
 @media (min-width: 1200px) {  }.ap-dropdown{ position:relative;box-sizing:border-box;display:inline-block; }
-.ap-dropdown-content{ position:absolute;box-sizing:border-box;overflow:hidden;transition:width 400ms, height 400ms;top:44px;left:0px;background:rgba(255,255,255,0.95);width:100%;max-width:480px;border:1px solid #EEE;z-index:99; }
+.ap-dropdown-content{ position:absolute;box-sizing:border-box;overflow:hidden;transition:width 400ms, height 400ms;top:44px;left:0;background:rgba(255,255,255,0.95);width:100%;max-width:480px;border:1px solid #EEE;z-index:99; }
 .ap-dropdown-content-inner{ min-width:192px;min-height:40px; }
 
 .ap-dropdown-closed .ap-dropdown-content{ height:0 !important;border:none; }
@@ -303,7 +406,7 @@
 .ap-header-menu{ position:relative;float:right;padding:0px; }
 .ap-header-menu-item{ padding:0 8px;margin:4px 8px;font-size:12px;vertical-align:middle;height:36px;line-height:36px; }
 .ap-header-dropdown{ float:right;position:static; }
-.ap-header-dropdown .ap-dropdown-content{ left:auto;right:0px; }
+.ap-header-dropdown .ap-dropdown-content{ left:auto;right:0; }
 
 @media (min-width: 768px) { .ap-header-logo{ float:left; }
 .ap-header-tab{ display:inline-block;margin:0 16px;padding:0 8px;height:44px;line-height:44px; }
@@ -320,37 +423,50 @@
 .ap-modal .ap-view-stack .ap-view-stack-inner{ transition:opacity 100ms; }
 @media (min-width: 768px) {  }
 @media (min-width: 992px) {  }
-@media (min-width: 1200px) {  }.ap-dialog{ display:none;background-color:transparent;position:fixed;left:0;right:0;bottom:0;top:0;z-index:39; }
+@media (min-width: 1200px) {  }.ap-dialog{ display:none;background-color:transparent;position:fixed;left:0;right:0;bottom:0;top:0;z-index:99; }
 .ap-dialog-back{ background-color:rgba(0,0,0,0.1);position:absolute;left:0;right:0;bottom:0;top:0;z-index:1; }
 .ap-dialog-back-inner{ width:100%;height:100%;box-sizing:border-box;display:block; }
 .ap-dialog-present{ display:block; }
-.ap-dialog-inner{ height:100%;width:100%;box-sizing:border-box;position:relative;padding:24px;z-index:2; }
-.ap-dialog-content{ overflow:auto;z-index:3;margin:0 auto;height:100%;background-color:#FFF;border:1px solid #E0E0E0;border-radius:8px;max-width:640px;box-sizing:border-box;position:relative; }
+.ap-dialog-inner{ height:100%;width:100%;box-sizing:border-box;position:relative;padding:36px 24px;z-index:4;justify-content:center;flex-direction:column; }
+.ap-dialog-content{ overflow:auto;z-index:8;margin:0 auto;height:auto;background-color:#FFF;border:1px solid #E0E0E0;border-radius:8px;min-height:240px;max-width:640px;width:100%;box-sizing:border-box;position:relative; }
 .ap-dialog-title{ line-height:44px;margin:0;padding:0;font-weight:normal; }
 .ap-dialog-close-button{ position:absolute;top:0;right:0;padding:0 16px;font-size:16px;line-height:44px;display:inline-block;cursor:pointer;z-index:44; }
 .ap-dialog-close-button:hover{ opacity:0.9; }
 .ap-dialog-close-button:active{ opacity:0.6; }
 .ap-dialog-close-button-icon{ line-height:44px; }
-.ap-dialog-header{ display:block;position:absolute;z-index:2;text-align:center;top:0;left:0;right:0;height:44px;line-height:44px;box-sizing:border-box;border-bottom:1px solid #FAFAFA;background-color:rgba(255,255,255,0.9); }
-.ap-dialog-body{ padding:52px 16px 8px;box-sizing:border-box;height:100%;overflow:auto; }
+.ap-dialog-header{ display:block;position:absolute;z-index:2;text-align:center;top:0;left:0;right:0;height:44px;line-height:44px;box-sizing:border-box;border-bottom:1px solid #F5F5F5;background-color:rgba(255,255,255,0.9); }
+.ap-dialog-body{ padding:52px 16px 8px;box-sizing:border-box;max-height:100%;height:auto;width:100%;overflow:auto; }
 .ap-dialog-fix{ overflow:hidden !important; }
+.ap-dialog-spinner{ position:absolute;background:rgba(255,255,255,0.8);left:0;top:0;right:0;bottom:0;z-index:99; }
 @media (min-width: 768px) {  }
 @media (min-width: 992px) {  }
-@media (min-width: 1200px) {  }.ap-yesno-dialog .ap-dialog-body{ padding-bottom:40px; }
+@media (min-width: 1200px) {  }.ap-yesno-dialog .ap-dialog-body{ padding-bottom:48px; }
 .ap-yesno-dialog .ap-dialog-close-button-icon{ display:none; }
 .ap-yesno-dialog-control{ display:flex;position:absolute;left:0;right:0;bottom:0;background-color:rgba(255,255,255,0.9); }
-.ap-yesno-dialog-button{ display:block;flex:1;width:50%;text-align:center;border:1px solid #EEE;margin:0 -1px;color:#38E; }
-.ap-yesno-dialog-button-text{ display:inline-block;width:100%;box-sizing:border-box;line-height:32px; }
+.ap-yesno-dialog-button{ display:block;flex:1;width:50%;text-align:center;border:1px solid #EEE;margin:0 -1px;color:#b35600; }
+.ap-yesno-dialog-button-text{ display:inline-block;width:100%;box-sizing:border-box;line-height:40px; }
 .ap-yesno-dialog-button:hover{ cursor:pointer;opacity:0.9; }
 .ap-yesno-dialog-button:active{ opacity:0.6; }
 @media (min-width: 768px) {  }
 @media (min-width: 992px) {  }
-@media (min-width: 1200px) {  }.ap-form{ position:relative; }
+@media (min-width: 1200px) {  }.ap-confirm-dialog .ap-dialog-body{ padding-bottom:40px;text-align:center; }
+
+.ap-confirm-dialog-control{ display:block;text-align:center;position:relative;left:0;right:0;bottom:0;background-color:rgba(255,255,255,0.9);padding:16px 0; }
+.ap-confirm-dialog-button{ display:inline-block;width:80%;text-align:center;border:1px solid #EEE;margin:0 auto;background:#b35600;color:white;box-sizing:border-box;max-width:320px; }
+.ap-confirm-dialog-button-disabled, .ap-confirm-dialog-button-disabled:hover, .ap-confirm-dialog-button-disabled:active{ cursor:default;box-shadow:none;color:#888;border-color:#888;background-color:#F0F0F0; }
+.ap-confirm-dialog-checkbox{ margin:8px auto;line-height:32px;text-align:left; }
+.ap-confirm-dialog-checkbox i:before{ line-height:32px; }
+.ap-confirm-dialog-message{ font-size:smaller;padding:16px 0; }
+.ap-confirm-dialog-err{ font-size:smaller;text-align:center;color:#B31818;font-style:italic; }
+@media (min-width: 768px) {  }
+@media (min-width: 992px) {  }
+@media (min-width: 1200px) {  }.ap-form{ position:relative;margin:0px; }
 .ap-form-centered{ margin:8px auto;max-width:480px; }
-.ap-form-spinner-cover{ position:absolute;left:0;top:0;right:0;bottom:0;text-align:center;box-sizing:border-box;padding:16px 32px;background:rgba(255, 255, 255, 0.75);border:1px solid rgba(255, 255, 255, 0.9);z-index:8;color:#888; }
+.ap-form-spinner-cover{ position:absolute;left:0;top:0;right:0;bottom:0;text-align:center;box-sizing:border-box;padding:16px 32px;background:rgba(255,255,255,0.8);border:1px solid rgba(255, 255, 255, 0.9);z-index:8;color:#888; }
 .ap-form .ap-form-errored{ border:1px solid #E11;background:#FFF0F0; }
 .ap-form-error-message{ color:#E11;font-size:9px;font-style:italic;padding:4px 0 0;display:none; }
 .ap-form-error-message-visible{ display:block; }
+.ap-form-dummy-input{ visibility:hidden;z-index:-999;display:none;width:0;height:0;opacity:0; }
 @media (min-width: 768px) {  }
 @media (min-width: 992px) {  }
 @media (min-width: 1200px) {  }.ap-notice{ display:block;transition:height 300ms;overflow:hidden;font-size:12px;background:rgba(0,0,0,0.75);color:white;position:relative; }
@@ -398,8 +514,8 @@
 .ap-range-label{ display:inline-block;padding:2px 4px;text-align:right;min-width:24px;font-size:14px;line-height:24px;box-sizing:border-box; }
 @media (min-width: 768px) {  }
 @media (min-width: 992px) {  }
-@media (min-width: 1200px) {  }.ap-accordion{ position:relative;overflow-y:hidden;transition:max-height 300ms;border:1px solid #AAA;background:white;border-radius:4px; }
-.ap-accordion-header{ padding:0 8px;line-height:44px;height:45px;cursor:pointer;box-sizing:border-box;margin:-1px;border-radius:0 0 4px 4px;border:1px solid #AAA; }
+@media (min-width: 1200px) {  }.ap-accordion{ position:relative;overflow-y:hidden;transition:max-height 300ms;border:1px solid #AAA;background:white;box-sizing:border-box;border-radius:4px; }
+.ap-accordion-header{ padding:0 8px;line-height:44px;height:45px;cursor:pointer;box-sizing:border-box;margin:-1px;width:100%;border-radius:0 0 4px 4px;border:1px solid #AAA; }
 .ap-accordion-header:hover{ opacity:0.9; }
 .ap-accordion-header:active{ opacity:0.66; }
 .ap-accordion-body{ padding:8px; }
@@ -430,7 +546,7 @@
 .ap-view-wide .ap-container{ max-width:none; }
 .ap-view-spinner{ position:absolute;left:0;top:0;right:0;bottom:0;z-index:4;background-color:rgba(255,255,255,0.5);color:#888;text-align:center;overflow:hidden;box-sizing:border-box; }
 .ap-view-inner{ position:absolute;left:0;top:0;right:0;bottom:0; }
-.ap-view-header{ position:absolute;left:0;top:0;right:0;height:44px;display:block;line-height:44px;padding:0;margin:0;z-index:1;box-sizing:border-box; }
+.ap-view-header{ position:absolute;left:0;top:0;right:0;height:44px;display:block;line-height:44px;padding:0;margin:0;z-index:1;box-sizing:border-box;border-bottom:1px solid #F5F5F5; }
 .ap-view-header-inner{ display:flex;padding:0;margin:0 auto; }
 .ap-view-header-content{ width:100%;flex:1; }
 .ap-view-body{ padding:52px 8px 8px;margin:0;display:block;background-color:#FFF; }
@@ -442,6 +558,14 @@
 .ap-view-header-button-aligner{ display:inline-block;width:1px;overflow:hidden;opacity:0;color:transparent;margin-right:-1px;line-height:44px;height:44px;vertical-align:middle; }
 .ap-view-header-ion{ display:inline-block;line-height:44px;vertical-align:middle; }
 .ap-view-header-button-text{ line-height:44px;vertical-align:middle; }
+.ap-view-header-title{ margin:0 auto;display:block;vertical-align:middle;font-weight:normal;font-size:14px;text-align:center; }
+.ap-view-footer{ position:relative;display:block;width:100%; }
+.ap-view-footer-space{ display:none; }
+
+.ap-view-footer-content{ box-sizing:border-box; }
+.ap-view-footer-inner{ padding:8px 8px;background:rgba(255,255,255,0.8);border-style:solid;border-width:1px 1px 0;border-color:#F0F0F0;box-sizing:border-box; }
+.ap-view-footer-fixed .ap-view-footer-content{ position:fixed;left:0;right:0;bottom:0;z-index:4; }
+.ap-view-footer-fixed .ap-view-footer-space{ display:block; }
 @media (min-width: 768px) {  }
 @media (min-width: 992px) {  }
 @media (min-width: 1200px) {  }.ap-view-stack{ position:fixed;top:0;left:0;right:0;bottom:0;overflow:hidden; }
@@ -467,10 +591,21 @@
 .ap-view-stack-way-fade-in.ap-view-stack-popping-active .ap-view-wrap-0{ opacity:0; }
 @media (min-width: 768px) {  }
 @media (min-width: 992px) {  }
-@media (min-width: 1200px) {  }.ap-devtool{ display:block;box-shadow:4px 4px 8px 4px rgba(0,0,0,0.33);border-radius:2px;color:#AAA;background-color:rgba(0,0,0,0.8);border:1px solid rgba(0,0,0,0.8);position:absolute;font-size:12px;right:84px;bottom:64px;z-index:9999;cursor:pointer;box-sizing:border-box;transition:width 400ms, height 400ms;overflow:hidden; }
+@media (min-width: 1200px) {  }.ap-done{ text-align:center; }
+.ap-done-button-container{ display:flex;justify-content:center;align-items:center; }
+.ap-done-button{ font-size:11px;padding:4px 16px; }
+.ap-done-link{ display:inline-block;padding:8px 16px;color:#b35600;text-decoration:underline;font-size:14px; }
+
+.ap-done-link:active{ opacity:0.8; }
+@media (min-width: 768px) {  }
+@media (min-width: 992px) {  }
+@media (min-width: 1200px) {  }.ap-devtool{ display:block;box-shadow:4px 4px 8px 4px rgba(0,0,0,0.33);color:#AAA;position:absolute;font-size:12px;right:84px;bottom:64px;z-index:9999;cursor:pointer;box-sizing:border-box;background:transparent;border:none;transition:width 400ms, height 400ms;overflow:visible; }
+.ap-devtool-title{ display:inline-block;border-radius:2px;position:absolute;color:#888;text-shadow:2px 2px 4px rgba(0,0,0,0.5);left:0;font-size:9px;top:-14px;right:0;text-align:center; }
+.ap-devtool-display{ position:absolute;left:0;top:0;right:0;bottom:0;background-color:rgba(0,0,0,0.8);border:1px solid rgba(0,0,0,0.8);overflow:hidden; }
 .ap-devtool:hover{ opacity:0.98; }
 .ap-devtool:active{ opacity:1; }
 .ap-devtool-closed{ height:36px !important;width:36px !important;border-radius:18px !important; }
+.ap-devtool-closed .ap-devtool-display{ border-radius:18px !important; }
 .ap-devtool-closed-handle{ position:absolute;left:-16px;right:-16px;top:-16px;bottom:-16px;display:none; }
 .ap-devtool-closed .ap-devtool-closed-handle{ display:block; }
 
@@ -491,6 +626,31 @@ td.ap-devtool-cell{ text-align:right;color:#CCC; }
 .ap-devtool-info-table{ border-collapse:collapse;color:#888;font-size:10px;width:100%;padding:4px;margin:4px 0;box-sizing:border-box; }
 .ap-devtool-info-row:first-child .ap-devtool-cell{ border-top:none; }
 .ap-devtool-info-row:last-child .ap-devtool-cell{ border-bottom:none; }
+.ap-devtool-actions{ display:flex;flex-wrap:wrap;margin:4px 0;padding:4px 0; }
+.ap-devtool-action-button{ color:white;border-color:white;border-radius:50%;width:36px;height:36px;display:inline-flex;justify-content:center;align-items:center;font-size:7px;text-align:center;margin:2px;background-color:transparent; }
+.ap-devtool-action-button:hover{ background-color:rgba(255,255,255,0.1); }
+.ap-devtool-action-button:active{ background-color:rgba(255,255,255,0.3); }
+@media (min-width: 768px) {  }
+@media (min-width: 992px) {  }
+@media (min-width: 1200px) {  }.ap-grid{ display:flex;flex-flow:row wrap;justify-content:space-around;margin:0 auto; }
+.ap-grid-item-wrap{ display:inline-block;margin:0px;padding:0px;position:relative; }
+.ap-grid-item-arrow{ position:absolute;bottom:-16px;width:24px;height:24px;transform:rotate(-45deg);right:50%;border-radius:0 0 0 100%;transform-origin:top right;display:inline-block;background:#b35600; }
+.ap-grid-detail-wrap{ display:block;width:0;transition:height 400ms, max-height 400ms;padding:0;margin:0;z-index:4;box-sizing:border-box;background:#b35600;color:white; }
+.ap-grid-detail-wrap-active{ width:100%; }
+.ap-grid-detail-wrap-closed{ max-height:24px !important;height:0; }
+.ap-grid-item{ display:inline-flex;text-align:center;width:82px;height:82px;border:2px solid #CCC;background:#FFF;justify-content:flex-start;align-items:center;flex-direction:column;overflow:hidden;padding:8px;border-radius:4px;margin:8px; }
+.ap-grid-item:hover{ background:#FAFAFA;cursor:pointer; }
+.ap-grid-item-title{ padding:0;margin:4px 0;font-size:larger; }
+.ap-grid-item-text{ line-height:1em;font-size:smaller;margin:0; }
+.ap-grid-item-wrap-selected .ap-grid-item{ border:2px solid #b35600; }
+.ap-grid-item-wrap-selected .ap-grid-item:hover,.ap-grid-item-wrap-selected .ap-grid-item:active{ border:2px solid #b35600; }
+@media (min-width: 768px) {  }
+@media (min-width: 992px) {  }
+@media (min-width: 1200px) {  }.ap-peer-video{ position:relative;display:inline-block;margin:0 auto;background:#F0F0F0;border:1px solid #DDD; }
+
+.ap-peer-video-alt{ margin:0 auto;position:relative; }
+.ap-peer-video-alt-icon{ position:absolute;text-align:center;opacity:0.1;font-size:48px;top:0;left:0;right:0;display:flex;justify-content:center;align-items:center;bottom:0; }
+.ap-peer-video-spinner{ position:absolute;left:0;right:0;top:0;bottom:0;color:#CCC;background-color:rgba(255,255,255,0.8);z-index:9; }
 @media (min-width: 768px) {  }
 @media (min-width: 992px) {  }
 @media (min-width: 1200px) {  }
@@ -513,10 +673,21 @@ td.ap-devtool-cell{ text-align:right;color:#CCC; }
 .ap-recover-oneline-input input{ line-height:24px;padding:4px 8px;box-sizing:border-box;margin:0;border-right:none;border-radius:4px 0 0 4px; }
 .ap-recover-oneline-button{ width:80px;padding:0 16px;text-align:center;margin:0;line-height:32px;border-radius:0 4px 4px 0; }
 .ap-recover-fake-input{ display:none !important; }
+.ap-recover-send-message{ display:block; }
+.ap-recover-send-message-none{ display:none; }
+.ap-recover-reset-message{ display:block; }
+.ap-recover-reset-message-none{ display:none; }
 @media (min-width: 768px) {  }
 @media (min-width: 992px) {  }
 @media (min-width: 1200px) {  }
 .ap-profile-lead-form-message{ font-size:1em;color:#AAA;padding:32px 16px; }
+@media (min-width: 768px) {  }
+@media (min-width: 992px) {  }
+@media (min-width: 1200px) {  }
+.ap-resign-lead-form-title{ font-size:1.5em; }
+
+.ap-resign-reason-form-title{ font-size:1.5em; }
+
 @media (min-width: 768px) {  }
 @media (min-width: 992px) {  }
 @media (min-width: 1200px) {  }
@@ -4043,12 +4214,12 @@ td.ap-devtool-cell{ text-align:right;color:#CCC; }
 .ap-upload-aligner{ display:inline-block;width:1px;margin-right:-1px;height:100%;box-sizing:border-box;vertical-align:middle; }
 .ap-upload .ap-spinner{ position:absolute;top:0;left:0;right:0;bottom:0;z-index:8;background-color:#FFF;color:#DDD; }
 .ap-upload-preview-image{ display:inline-block;box-sizing:border-box;z-index:4;position:absolute;left:0;top:0;right:0;bottom:0;pointer-events:none;border:1px solid #AAA; }
-.ap-upload-remove-button{ display:inline-block;position:absolute;right:0;top:0;z-index:5;margin:0px;border:none;padding:8px;font-size:24px;color:#AAA;background:rgba(255,255,255,0.2);border-radius:0px; }
+.ap-upload-remove-button{ display:inline-block;position:absolute;right:0;top:0;z-index:5;margin:0;border:none;padding:8px;font-size:24px;color:#AAA;background:rgba(255,255,255,0.2);border-radius:0; }
 .ap-upload-remove-button:hover{ opacity:1;box-shadow:none;color:#555; }
 .ap-upload-remove-button:active{ opacity:1;box-shadow:none;color:#555; }
 @media (min-width: 768px) {  }
 @media (min-width: 992px) {  }
-@media (min-width: 1200px) {  }</style></head><body class="ap-body"><div id="demo-style"></div><header class="react-demo-header"><div class="react-demo-container"><h1><a href="https://github.com/apeman-react-labo/apeman-react-upload#readme">apeman-react-upload</a></h1></div></header><main><div><div class="react-demo-playground"><div class="react-demo-container"><div id="demo-wrap"><div><div class="ap-upload"><input type="file" class="ap-upload-input" multiple="" name="file-input-01" id="demo-file-upload-01" accept="image/*" style="width:180px;height:180px;"/><label class="ap-upload-label" for="demo-file-upload-01"><span class="ap-upload-aligner"></span><span class="ap-upload-label-inner"><i class="ap-upload-icon fa fa-cloud-upload"></i><span class="ap-upload-text">Upload file</span></span></label><div class="ap-spinner"><span class="ap-spinner-aligner">f</span><span class="ap-spinner-icon fa fa-spin fa-refresh"></span></div></div><div class="ap-upload"><input type="file" class="ap-upload-input" multiple="" name="file-input-02" id="demo-file-upload-02" accept="image/*" style="width:180px;height:180px;"/><label class="ap-upload-label" for="demo-file-upload-02"><span class="ap-upload-aligner"></span><span class="ap-upload-label-inner"><i class="ap-upload-icon fa fa-cloud-upload"></i><span class="ap-upload-text">Upload file</span></span></label><div class="ap-image ap-upload-preview-image ap-image-loading" style="width:180px;height:180px;left:0%;top:0%;"><img src="https://raw.githubusercontent.com/apeman-asset-labo/apeman-asset-images/master/dist/dummy/12.jpg" alt="NO IMAGE" class="ap-image-content" style="top:90px;left:90px;"/><div class="ap-spinner ap-image-spinner" style="width:180px;height:180px;"><span class="ap-spinner-aligner">f</span><span class="ap-spinner-icon fa fa-spin fa-refresh"></span></div></div><a class="ap-button ap-upload-remove-button"><i class="ap-upload-remove-icon fa fa-close"></i></a><div class="ap-spinner"><span class="ap-spinner-aligner">f</span><span class="ap-spinner-icon fa fa-spin fa-refresh"></span></div></div></div></div></div></div></div><div class="react-demo-container"><div><pre class="react-demo-src"><div><style scoped="scoped">.syntaxhighlighter a,
+@media (min-width: 1200px) {  }</style></head><body class="ap-body"><div id="demo-style"></div><header class="react-demo-header"><div class="react-demo-container"><h1><a href="https://github.com/apeman-react-labo/apeman-react-upload#readme">apeman-react-upload</a></h1></div></header><main><div><div class="react-demo-playground"><div class="react-demo-container"><div id="demo-wrap"><div><div class="ap-upload"><input type="file" class="ap-upload-input" multiple="" name="file-input-01" id="demo-file-upload-01" accept="image/*" style="width:180px;height:180px;"/><label class="ap-upload-label" for="demo-file-upload-01"><span class="ap-upload-aligner"></span><span class="ap-upload-label-inner"><i class="ap-upload-icon fa fa-cloud-upload"></i><span class="ap-upload-text">Upload file</span></span></label><div class="ap-spinner"><span class="ap-spinner-aligner"> </span><span class="ap-spinner-icon fa fa-spin fa-refresh"></span></div></div><div class="ap-upload"><input type="file" class="ap-upload-input" multiple="" name="file-input-02" id="demo-file-upload-02" accept="image/*" style="width:180px;height:180px;"/><label class="ap-upload-label" for="demo-file-upload-02"><span class="ap-upload-aligner"></span><span class="ap-upload-label-inner"><i class="ap-upload-icon fa fa-cloud-upload"></i><span class="ap-upload-text">Upload file</span></span></label><div class="ap-image ap-upload-preview-image ap-image-loading" style="width:180px;height:180px;left:0%;top:0%;"><div class="ap-spinner ap-image-spinner" style="width:180px;height:180px;"><span class="ap-spinner-aligner"> </span><span class="ap-spinner-icon fa fa-spin fa-refresh"></span></div></div><a class="ap-button ap-upload-remove-button"><i class="ap-upload-remove-icon fa fa-close"></i></a><div class="ap-spinner"><span class="ap-spinner-aligner"> </span><span class="ap-spinner-icon fa fa-spin fa-refresh"></span></div></div></div></div></div></div></div><div class="react-demo-container"><div><pre class="react-demo-src"><div><style scoped="scoped">.syntaxhighlighter a,
 .syntaxhighlighter div,
 .syntaxhighlighter code,
 .syntaxhighlighter table,
@@ -4360,4 +4531,4 @@ td.ap-devtool-cell{ text-align:right;color:#CCC; }
 .syntaxhighlighter .keyword {
   font-weight: bold !important;
 }
-</style><div id="highlighter_304933" class="syntaxhighlighter nogutter  "><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="string">"use strict"</code><code class="plain">;</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="plain">import React from </code><code class="string">'react'</code> <code class="plain">;</code></div><div class="line number4 index3 alt1"><code class="plain">import ApUpload from </code><code class="string">'../../lib/ap_upload'</code><code class="plain">;</code></div><div class="line number5 index4 alt2">&nbsp;</div><div class="line number6 index5 alt1"><code class="plain">const DEMO_IMAGES = [</code></div><div class="line number7 index6 alt2"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="string">'<a href="https://raw.githubusercontent.com/apeman-asset-labo/apeman-asset-images/master/dist/dummy/12.jpg">https://raw.githubusercontent.com/apeman-asset-labo/apeman-asset-images/master/dist/dummy/12.jpg</a>'</code></div><div class="line number8 index7 alt1"><code class="plain">];</code></div><div class="line number9 index8 alt2">&nbsp;</div><div class="line number10 index9 alt1"><code class="plain">let Demo = React.createClass({</code></div><div class="line number11 index10 alt2"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">render() {</code></div><div class="line number12 index11 alt1"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">let s = </code><code class="keyword">this</code><code class="plain">;</code></div><div class="line number13 index12 alt2"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">return</code> <code class="plain">(</code></div><div class="line number14 index13 alt1"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">&lt;</code><code class="keyword">div</code><code class="plain">></code></div><div class="line number15 index14 alt2"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">&lt;</code><code class="keyword">ApUpload</code> <code class="plain">multiple={</code><code class="keyword">true</code><code class="plain">}</code></div><div class="line number16 index15 alt1"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="color1">id</code><code class="plain">=</code><code class="string">"demo-file-upload-01"</code></div><div class="line number17 index16 alt2"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="color1">name</code><code class="plain">=</code><code class="string">"file-input-01"</code></div><div class="line number18 index17 alt1"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="color1">accept</code><code class="plain">=</code><code class="string">"image/*"</code></div><div class="line number19 index18 alt2"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">onLoad={s.handleLoaded}></code></div><div class="line number20 index19 alt1"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">&lt;/</code><code class="keyword">ApUpload</code><code class="plain">></code></div><div class="line number21 index20 alt2">&nbsp;</div><div class="line number22 index21 alt1"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">&lt;</code><code class="keyword">ApUpload</code> <code class="plain">multiple={</code><code class="keyword">true</code><code class="plain">}</code></div><div class="line number23 index22 alt2"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="color1">id</code><code class="plain">=</code><code class="string">"demo-file-upload-02"</code></div><div class="line number24 index23 alt1"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="color1">name</code><code class="plain">=</code><code class="string">"file-input-02"</code></div><div class="line number25 index24 alt2"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="color1">accept</code><code class="plain">=</code><code class="string">"image/*"</code></div><div class="line number26 index25 alt1"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">value={DEMO_IMAGES}</code></div><div class="line number27 index26 alt2"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">onLoad={s.handleLoaded}></code></div><div class="line number28 index27 alt1"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">&lt;/</code><code class="keyword">ApUpload</code><code class="plain">></code></div><div class="line number29 index28 alt2"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">&lt;/</code><code class="keyword">div</code><code class="plain">></code></div><div class="line number30 index29 alt1"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">);</code></div><div class="line number31 index30 alt2"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">},</code></div><div class="line number32 index31 alt1"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">handleLoaded(ev){</code></div><div class="line number33 index32 alt2"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">console.log(</code><code class="string">'result'</code><code class="plain">, ev.target, ev.urls);</code></div><div class="line number34 index33 alt1"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">}</code></div><div class="line number35 index34 alt2"><code class="plain">});</code></div><div class="line number36 index35 alt1">&nbsp;</div><div class="line number37 index36 alt2"><code class="plain">module.exports = Demo;</code></div></div></td></tr></tbody></table></div></div></pre></div></div></main><footer><div class="react-demo-container"><ul class="ap-links"><li class="ap-links-item"><a href="https://github.com/apeman-labo/apeman">apeman</a></li><li class="ap-links-item"><a href="https://github.com/apeman-react-labo">apeman-react-labo</a></li><li class="ap-links-item"><a href="https://facebook.github.io/react/">React</a></li></ul></div></footer><script src="./demo.js"></script></body></html>
+</style><div id="highlighter_639896" class="syntaxhighlighter nogutter  "><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="string">'use strict'</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="plain">import React from </code><code class="string">'react'</code></div><div class="line number4 index3 alt1"><code class="plain">import ApUpload from </code><code class="string">'../../lib/ap_upload'</code></div><div class="line number5 index4 alt2">&nbsp;</div><div class="line number6 index5 alt1"><code class="plain">const DEMO_IMAGES = [</code></div><div class="line number7 index6 alt2"><code class="undefined spaces">&nbsp;&nbsp;</code><code class="string">'<a href="https://raw.githubusercontent.com/apeman-asset-labo/apeman-asset-images/master/dist/dummy/12.jpg">https://raw.githubusercontent.com/apeman-asset-labo/apeman-asset-images/master/dist/dummy/12.jpg</a>'</code></div><div class="line number8 index7 alt1"><code class="plain">]</code></div><div class="line number9 index8 alt2">&nbsp;</div><div class="line number10 index9 alt1"><code class="plain">let Demo = React.createClass({</code></div><div class="line number11 index10 alt2"><code class="undefined spaces">&nbsp;&nbsp;</code><code class="plain">render () {</code></div><div class="line number12 index11 alt1"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">const s = </code><code class="keyword">this</code></div><div class="line number13 index12 alt2"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">return</code> <code class="plain">(</code></div><div class="line number14 index13 alt1"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">&lt;</code><code class="keyword">div</code><code class="plain">></code></div><div class="line number15 index14 alt2"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">&lt;</code><code class="keyword">ApUpload</code> <code class="plain">multiple={ </code><code class="keyword">true</code> <code class="plain">}</code></div><div class="line number16 index15 alt1"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="color1">id</code><code class="plain">=</code><code class="string">"demo-file-upload-01"</code></div><div class="line number17 index16 alt2"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="color1">name</code><code class="plain">=</code><code class="string">"file-input-01"</code></div><div class="line number18 index17 alt1"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="color1">accept</code><code class="plain">=</code><code class="string">"image/*"</code></div><div class="line number19 index18 alt2"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">onLoad={ s.handleLoaded }></code></div><div class="line number20 index19 alt1"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">&lt;/</code><code class="keyword">ApUpload</code><code class="plain">></code></div><div class="line number21 index20 alt2">&nbsp;</div><div class="line number22 index21 alt1"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">&lt;</code><code class="keyword">ApUpload</code> <code class="plain">multiple={ </code><code class="keyword">true</code> <code class="plain">}</code></div><div class="line number23 index22 alt2"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="color1">id</code><code class="plain">=</code><code class="string">"demo-file-upload-02"</code></div><div class="line number24 index23 alt1"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="color1">name</code><code class="plain">=</code><code class="string">"file-input-02"</code></div><div class="line number25 index24 alt2"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="color1">accept</code><code class="plain">=</code><code class="string">"image/*"</code></div><div class="line number26 index25 alt1"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">value={ DEMO_IMAGES }</code></div><div class="line number27 index26 alt2"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">onLoad={ s.handleLoaded }></code></div><div class="line number28 index27 alt1"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">&lt;/</code><code class="keyword">ApUpload</code><code class="plain">></code></div><div class="line number29 index28 alt2"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">&lt;/</code><code class="keyword">div</code><code class="plain">></code></div><div class="line number30 index29 alt1"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">)</code></div><div class="line number31 index30 alt2"><code class="undefined spaces">&nbsp;&nbsp;</code><code class="plain">},</code></div><div class="line number32 index31 alt1"><code class="undefined spaces">&nbsp;&nbsp;</code><code class="plain">handleLoaded (ev) {</code></div><div class="line number33 index32 alt2"><code class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">console.log(</code><code class="string">'result'</code><code class="plain">, ev.target, ev.urls)</code></div><div class="line number34 index33 alt1"><code class="undefined spaces">&nbsp;&nbsp;</code><code class="plain">}</code></div><div class="line number35 index34 alt2"><code class="plain">})</code></div><div class="line number36 index35 alt1">&nbsp;</div><div class="line number37 index36 alt2"><code class="plain">module.exports = Demo</code></div></div></td></tr></tbody></table></div></div></pre></div></div></main><footer><div class="react-demo-container"><ul class="ap-links"><li class="ap-links-item"><a href="https://github.com/apeman-labo/apeman">apeman</a></li><li class="ap-links-item"><a href="https://github.com/apeman-react-labo">apeman-react-labo</a></li><li class="ap-links-item"><a href="https://facebook.github.io/react/">React</a></li></ul></div></footer><script src="./demo.js"></script></body></html>
