@@ -1,6 +1,6 @@
 /**
  * Style for ApUpload.
- * @constructor ApUploadStyle
+ * @class ApUploadStyle
  */
 
 'use strict'
@@ -9,16 +9,14 @@ import React, {PropTypes as types} from 'react'
 import {ApStyle} from 'apeman-react-style'
 
 /** @lends ApUploadStyle */
-let ApUploadStyle = React.createClass({
+const ApUploadStyle = React.createClass({
   propTypes: {
-    scoped: types.bool,
     style: types.object,
     highlightColor: types.string,
     backgroundColor: types.string
   },
   getDefaultProps () {
     return {
-      scoped: false,
       style: {},
       highlightColor: ApStyle.DEFAULT_HIGHLIGHT_COLOR,
       backgroundColor: ApStyle.DEFAULT_BACKGROUND_COLOR
@@ -134,8 +132,7 @@ let ApUploadStyle = React.createClass({
     let mediumMediaData = {}
     let largeMediaData = {}
     return (
-      <ApStyle scoped={ props.scoped }
-               data={ Object.assign(data, props.style) }
+      <ApStyle data={ Object.assign(data, props.style) }
                smallMediaData={ smallMediaData }
                mediumMediaData={ mediumMediaData }
                largeMediaData={ largeMediaData }
@@ -144,4 +141,4 @@ let ApUploadStyle = React.createClass({
   }
 })
 
-module.exports = ApUploadStyle
+export default ApUploadStyle

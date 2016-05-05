@@ -1,6 +1,6 @@
 /**
  * apeman react package for file upload components.
- * @constructor ApUpload
+ * @class ApUpload
  */
 
 'use strict'
@@ -68,20 +68,21 @@ const ApUpload = React.createClass({
       }
       reader.readAsDataURL(file)
     },
-    isImageUrl(url) {
-      return /^data:image/.test(url) || !!~[
-          '.jpg',
-          '.jpeg',
-          '.svg',
-          '.gif',
-          '.png'
-        ].indexOf(path.extname(url))
+    isImageUrl (url) {
+      const imageExtensions = [
+        '.jpg',
+        '.jpeg',
+        '.svg',
+        '.gif',
+        '.png'
+      ]
+      return /^data:image/.test(url) || !!~imageExtensions.indexOf(path.extname(url))
     }
   },
 
-  getInitialState() {
-    const s = this,
-      { props } = s;
+  getInitialState () {
+    const s = this
+    let { props } = s
     let hasValue = props.value && props.value.length > 0
     return {
       spinning: false,
@@ -180,10 +181,10 @@ const ApUpload = React.createClass({
     })
   },
 
-  handleRemove() {
-    const s = this,
-      { props } = s,
-      { onLoad } = props
+  handleRemove () {
+    const s = this
+    let { props } = s
+    let { onLoad } = props
     s.setState({
       error: null,
       urls: null
@@ -229,15 +230,12 @@ const ApUpload = React.createClass({
                  src={ url }
                  height={ height }
                  width={ width }
-                 className={ classnames("ap-upload-preview-image") }
-                 style={ {
-                            left: `${i * 10}%`,
-                            top: `${i * 10}%`
-                         } }
+                 className={ classnames('ap-upload-preview-image') }
+                 style={ { left: `${i * 10}%`, top: `${i * 10}%` } }
                  scale="fit">
         </ApImage>
       ))
   }
 })
 
-module.exports = ApUpload
+export default ApUpload

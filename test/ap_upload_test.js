@@ -4,7 +4,7 @@
  */
 'use strict'
 
-const ApUpload = require('../lib/ap_upload.js')
+const ApUpload = require('../lib/ap_upload.js').default
 const React = require('react')
 const ReactDOM = require('react-dom/server')
 const assert = require('assert')

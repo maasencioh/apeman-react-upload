@@ -1,9 +1,9 @@
 'use strict'
 
 const React = require('react')
-const ReactDOM = require('react-dom');
+const ReactDOM = require('react-dom')
 
-const Demo = require('./demo.component.js')
+const Demo = require('./demo.component.js').default
 
 window.addEventListener('load', function onLoad () {
   window.React = React

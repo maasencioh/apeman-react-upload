@@ -11,7 +11,8 @@ process.chdir(`${__dirname}/..`)
 const apeWatching = require('ape-watching')
 const childProcess = require('child_process')
 
-let timer = null;
+let timer = null
+
 apeWatching.watchFiles([
   'lib/**/*.jsx'
 ], (ev, filename) => {
