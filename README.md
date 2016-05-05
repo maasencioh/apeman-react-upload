@@ -90,12 +90,12 @@ Usage
 import React from 'react'
 import {ApUpload, ApUploadStyle} from 'apeman-react-upload'
 
-let ExampleComponent = React.createClass({
+const ExampleComponent = React.createClass({
   render () {
-    let s = this
+    const s = this
     return (
       <div>
-        <ApUploadStyle scoped={ true }/>
+        <ApUploadStyle/>
         <ApUpload multiple={ false }
                   id="demo-file-upload-01"
                   name="file-input-01"
@@ -133,10 +133,9 @@ Components
 
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
-| scoped | bool | false |  |
-| style | object | {} |  |
-| highlightColor | string | ApStyle.DEFAULT_HIGHLIGHT_COLOR |  |
-| backgroundColor | string | ApStyle.DEFAULT_BACKGROUND_COLOR |  |
+| style | object | {} | |  |
+| highlightColor | string | ApStyle.DEFAULT_HIGHLIGHT_COLOR | |  |
+| backgroundColor | string | ApStyle.DEFAULT_BACKGROUND_COLOR | |  |
 
 ### ApUpload
 
@@ -144,21 +143,21 @@ Components
 
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
-| name | string | null | Name of input |
-| id | string | `ap-upload-${uuid.v4()}` | DOM id of input |
-| multiple | bool | false | Allow multiple upload |
-| onChange | func | null | Handler for change event |
-| onLoad | func | null | Handler for load event |
-| onError | func | null | Handler for error event |
-| width | number | 180 | Image width |
-| height | number | 180 | Image height |
-| text | string | 'Upload file' | Guide text |
-| accept | string | null | Accept file type |
-| icon | string | 'fa fa-cloud-upload' | Guide icon |
-| closeIcon | string | 'fa fa-close' | Icon for close images |
-| spinner | string |  | Spinner theme |
-| value | string&#124;array |  | Value of input |
-| spinnerIcon |  | ApSpinner.DEFAULT_THEME |  |
+| name | string | null | | Name of input |
+| id | string | &#x60;ap-upload-${uuid.v4()}&#x60; | | DOM id of input |
+| multiple | bool | false | | Allow multiple upload |
+| onChange | func | null | | Handler for change event |
+| onLoad | func | null | | Handler for load event |
+| onError | func | null | | Handler for error event |
+| width | number | 180 | | Image width |
+| height | number | 180 | | Image height |
+| text | string | &#x27;Upload file&#x27; | | Guide text |
+| accept | string | null | | Accept file type |
+| icon | string | &#x27;fa fa-cloud-upload&#x27; | | Guide icon |
+| closeIcon | string | &#x27;fa fa-close&#x27; | | Icon for close images |
+| spinner | string |  | | Spinner theme |
+| value | string|array |  | | Value of input |
+| spinnerIcon |  | ApSpinner.DEFAULT_THEME | |  |
 
 
 

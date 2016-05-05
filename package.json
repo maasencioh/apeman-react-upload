@@ -1,6 +1,6 @@
 {
   "name": "apeman-react-upload",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "apeman react package for file upload components.",
   "main": "lib",
   "scripts": {
