@@ -34,4 +34,4 @@ node_modules
 tmp
 
 !lib/*.js
-doc/demo
+# doc/demo
