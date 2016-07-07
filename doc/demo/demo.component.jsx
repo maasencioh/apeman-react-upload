@@ -17,20 +17,20 @@ const Demo = React.createClass({
     return (
       <div>
         <ApSpinnerStyle />
-        <ApButtonStyle highlightColor="#b35600"/>
+        <ApButtonStyle highlightColor='#b35600'/>
         <ApImageStyle />
         <ApUploadStyle />
         <ApUpload multiple={ true }
-                  id="demo-file-upload-01"
-                  name="file-input-01"
-                  accept="image/*"
+                  id='demo-file-upload-01'
+                  name='file-input-01'
+                  accept='image/*'
                   onLoad={ s.handleLoaded }>
         </ApUpload>
 
         <ApUpload multiple={ true }
-                  id="demo-file-upload-02"
-                  name="file-input-02"
-                  accept="image/*"
+                  id='demo-file-upload-02'
+                  name='file-input-02'
+                  accept='image/*'
                   value={ DEMO_IMAGES }
                   onLoad={ s.handleLoaded }>
         </ApUpload>

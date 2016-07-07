@@ -116,8 +116,8 @@ const ApUpload = React.createClass({
     return (
       <div className={classnames('ap-upload', props.className)}
            style={Object.assign({}, props.style)}>
-        <input type="file"
-               className="ap-upload-input"
+        <input type='file'
+               className='ap-upload-input'
                multiple={ props.multiple }
                name={ props.name }
                id={ props.id }
@@ -125,12 +125,12 @@ const ApUpload = React.createClass({
                onChange={s.handleChange}
                style={{width, height}}
         />
-        <label className="ap-upload-label" htmlFor={ props.id }>
-                    <span className="ap-upload-aligner">
+        <label className='ap-upload-label' htmlFor={ props.id }>
+                    <span className='ap-upload-aligner'>
                     </span>
-                    <span className="ap-upload-label-inner">
-                        <i className={ classnames("ap-upload-icon", props.icon) }/>
-                        <span className="ap-upload-text">{props.text}</span>
+                    <span className='ap-upload-label-inner'>
+                        <i className={ classnames('ap-upload-icon', props.icon) }/>
+                        <span className='ap-upload-text'>{props.text}</span>
                       { props.children }
                     </span>
         </label>
@@ -212,8 +212,8 @@ const ApUpload = React.createClass({
       return null
     }
     return (
-      <ApButton onTap={ s.handleRemove } className="ap-upload-remove-button">
-        <i className={ classnames("ap-upload-remove-icon", icon) }/>
+      <ApButton onTap={ s.handleRemove } className='ap-upload-remove-button'>
+        <i className={ classnames('ap-upload-remove-icon', icon) }/>
       </ApButton>
     )
   },
@@ -232,7 +232,7 @@ const ApUpload = React.createClass({
                  width={ width }
                  className={ classnames('ap-upload-preview-image') }
                  style={ { left: `${i * 10}%`, top: `${i * 10}%` } }
-                 scale="fit">
+                 scale='fit'>
         </ApImage>
       ))
   }
