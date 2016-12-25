@@ -5,14 +5,14 @@
 
 'use strict'
 
-import React, {PropTypes as types} from 'react'
+import React, { PropTypes as types } from 'react'
 import classnames from 'classnames'
 import async from 'async'
 import path from 'path'
 import uuid from 'uuid'
-import {ApImage} from 'apeman-react-image'
-import {ApSpinner} from 'apeman-react-spinner'
-import {ApButton} from 'apeman-react-button'
+import { ApImage } from 'apeman-react-image'
+import { ApSpinner } from 'apeman-react-spinner'
+import { ApButton } from 'apeman-react-button'
 
 /** @lends ApUpload */
 const ApUpload = React.createClass({
@@ -123,15 +123,15 @@ const ApUpload = React.createClass({
                id={ props.id }
                accept={ props.accept }
                onChange={s.handleChange}
-               style={{width, height}}
+               style={{ width, height }}
         />
         <label className='ap-upload-label' htmlFor={ props.id }>
                     <span className='ap-upload-aligner'>
                     </span>
-                    <span className='ap-upload-label-inner'>
+          <span className='ap-upload-label-inner'>
                         <i className={ classnames('ap-upload-icon', props.icon) }/>
                         <span className='ap-upload-text'>{props.text}</span>
-                      { props.children }
+            { props.children }
                     </span>
         </label>
         { s._renderPreviewImage(state.urls, width, height) }
@@ -154,28 +154,26 @@ const ApUpload = React.createClass({
     let { props } = s
     let { target } = e
     let files = Array.prototype.slice.call(target.files, 0)
-
     let { onChange, onError, onLoad } = props
 
     s.setState({ spinning: true })
     if (onChange) {
       onChange(e)
     }
-    async.concat(files, ApUpload.readFile, (err, urls) => {
-      e.urls = urls
-      e.target = target
+    async.concat(files, ApUpload.readFile, (error, urls) => {
       s.setState({
         spinning: false,
-        error: err,
-        urls: urls
+        error,
+        urls
       })
-      if (err) {
+      if (error) {
         if (onError) {
-          onError(err)
+          onError(error)
         }
       } else {
         if (onLoad) {
-          onLoad(e)
+          let loaded = Object.assign({ urls, target })
+          onLoad(loaded)
         }
       }
     })
