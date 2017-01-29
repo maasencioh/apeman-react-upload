@@ -1,7 +1,7 @@
 /**
  * apeman react package for file upload components.
  * @module apeman-react-upload
- * @version 3.1.0
+ * @version 3.1.1
  */
 'use strict'
 

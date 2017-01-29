@@ -145,6 +145,16 @@ const ApUpload = React.createClass({
   // Lifecycle
   // --------------------
 
+  componentWillReceiveProps (nextProps) {
+    const s = this
+    const { props } = s
+    let { value } = nextProps
+    let hasValue = value && value.length > 0
+    if (hasValue && (props.value !== value)) {
+      s.setState({ urls: [].concat(value) })
+    }
+  },
+
   // ------------------
   // Custom
   // ------------------
